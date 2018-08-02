@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import './App.css';
 // eslint-disable-next-line
 import Table from "./Table.js";
-import Tr from "./Tr.js";
-import Td from "./Td.js";
+// import Tr from "./Tr.js";
+// import Td from "./Td.js";
 
 /*
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
 }
 */
 
+/*
 class App extends Component {
   render() {
     return (
@@ -69,6 +70,28 @@ class App extends Component {
           c5={<Td d="Will eat till he explodes"/>}
         />
         }
+      />
+    );
+  }
+}
+*/
+
+// import React, {Component} from 'react';
+import Text from './Text.js';
+
+class App extends Component {
+  render() {
+    const stringProps = 'I am a string';
+    const numberProps = 1;
+    const objectProps = {a: 1, b: 2, c: 3};
+    const arrayProps = [1, 2, 3, 4, 5];
+    return (
+      <Text
+        text="Hello World!"
+        stringProps={stringProps}
+        numberProps={numberProps}
+        objectProps={objectProps}
+        arrayProps={arrayProps}
       />
     );
   }

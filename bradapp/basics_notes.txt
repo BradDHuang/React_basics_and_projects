@@ -15,6 +15,15 @@ With HTML &nbsp;
 allows you to create multiple spaces that are visible on a web page and not only in the source code.
 
 
+// return <p>{this.props.objectProps}</p>; // (at Text.js:13)
+// const objectProps = {a: 1, b: 2, c: 3};
+// return (
+        <Text // (at App.js:89)
+            objectProps={objectProps}
+        />);
+Objects are not valid as a React child (found: object with keys {a, b, c}). 
+If you meant to render a collection of children, use an array instead.
+
 
 
 
