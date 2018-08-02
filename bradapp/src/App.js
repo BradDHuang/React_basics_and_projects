@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
 // eslint-disable-next-line
-import Table from "./Table.js";
+// import Table from "./Table.js";
 // import Tr from "./Tr.js";
 // import Td from "./Td.js";
 
@@ -76,6 +76,7 @@ class App extends Component {
 }
 */
 
+/*
 // import React, {Component} from 'react';
 import Text from './Text.js';
 
@@ -96,5 +97,30 @@ class App extends Component {
     );
   }
 }
+*/
+
+import Header from "./layout/Header.js";
+import Footer from "./layout/Footer.js";
+import Content from "./layout/Content.js";
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {<Header h="Header"/>}
+        {<Content c="Content"/>}
+        {<Footer f="Footer"/>}
+      </div>
+    );
+  };
+}
 
 export default App;
+
+
+
+
+
+
+
+

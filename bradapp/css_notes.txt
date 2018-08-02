@@ -1,0 +1,12 @@
+
+
+The border-width property can have from one to 4 values 
+(for the top border, right border, bottom border, and the left border).
+
+
+
+
+
+
+
+

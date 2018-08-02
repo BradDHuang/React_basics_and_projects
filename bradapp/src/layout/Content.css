@@ -1,0 +1,16 @@
+
+.content {
+    /*top: 150px;*/
+    height: 400px;
+    font-size: 60px;
+    /*display: table-cell;*/
+    /*vertical-align: middle;*/
+    text-align: center;
+    line-height: 330px;
+    border-style: solid;
+    border-color: red;
+    border-width: 2px 4px 2px 4px;
+}
+
+
+
