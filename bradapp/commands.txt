@@ -1,0 +1,25 @@
+
+
+Install create-react-app as a global package via npm
+
+    npm install create-react-app -g
+    
+Use create-react-app to create a project
+
+    create-react-app myapp
+    
+Run the application
+
+    cd myapp
+    npm start
+    // https://react-basics-and-projects-happitt.c9users.io/
+    
+
+
+
+
+
+
+
+
+

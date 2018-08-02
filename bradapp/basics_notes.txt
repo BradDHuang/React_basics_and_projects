@@ -1,0 +1,23 @@
+
+
+The <td> tag 
+    defines a standard cell in an HTML table. 
+    An HTML table has two kinds of cells: 
+        Header cells - contains header information (created with the <th> element) 
+        Standard cells - contains data (created with the <td> element)
+      
+        
+&nbsp;        
+Alternatively referred to as a fixed space or hard space, 
+Non-Breaking SPace (NBSP) is used in programming, 
+and word processing to create a space in a line that cannot be broken by word wrap. 
+With HTML &nbsp; 
+allows you to create multiple spaces that are visible on a web page and not only in the source code.
+
+
+
+
+
+
+
+
