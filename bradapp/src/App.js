@@ -99,6 +99,7 @@ class App extends Component {
 }
 */
 
+/*
 import Header from "./layout/Header.js";
 import Footer from "./layout/Footer.js";
 import Content from "./layout/Content.js";
@@ -110,6 +111,23 @@ class App extends Component {
         {<Header h="Header"/>}
         {<Content c="Content"/>}
         {<Footer f="Footer"/>}
+      </div>
+    );
+  };
+}
+*/
+
+import StatusBar from "./phone_screen_layout/StatusBar.js";
+import Docker from "./phone_screen_layout/Docker.js";
+import Content from "./phone_screen_layout/Content.js";
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {<StatusBar bar="Status Bar"/>}
+        {<Content c1="col1" c2="col2" c3="col3" c4="col4"/>}
+        {<Docker col1="col1" col2="col2" col3="col3" col4="col4"/>}
       </div>
     );
   };

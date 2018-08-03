@@ -1,0 +1,13 @@
+
+.statusBar {
+    height: 100px;
+    font-size: 60px;
+    line-height: 85px;
+    text-align: center;
+    border-style: solid;
+    border-color: red;
+    border-width: 4px 4px 2px 4px;
+}
+
+
+
