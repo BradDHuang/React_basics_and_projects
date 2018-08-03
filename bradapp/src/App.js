@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import IconPlus from './counterApp/plus.js';
+import IconMinus from './counterApp/minus.js';
 // eslint-disable-next-line
 // import Table from "./Table.js";
 // import Tr from "./Tr.js";
@@ -117,6 +119,7 @@ class App extends Component {
 }
 */
 
+/*
 import StatusBar from "./phone_screen_layout/StatusBar.js";
 import Docker from "./phone_screen_layout/Docker.js";
 import Content from "./phone_screen_layout/Content.js";
@@ -131,6 +134,34 @@ class App extends Component {
       </div>
     );
   };
+}
+*/
+
+class App extends Component {
+    // init. state:
+    constructor(props) {
+        super(props);
+        this.state = {starter: 1};
+    }
+    
+    inc = () => {
+      this.setState({starter: this.state.starter + 1});
+    }
+    dec = () => {
+      this.setState({starter: this.state.starter - 1});
+    }
+    
+    render() {
+        return (<div>
+        <h1 className="counter">
+            {this.state.starter}
+        </h1>
+        <div className="btns">
+          <button className="span" onClick={this.inc}><IconPlus /></button>
+          <button className="span" onClick={this.dec}><IconMinus /></button>
+        </div>
+        </div>);
+    }
 }
 
 export default App;
