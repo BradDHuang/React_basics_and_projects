@@ -185,10 +185,44 @@ export default App;
 import React, {Component} from "react";
 import "./style.css";
 
+import StartBtn from "../StartBtn";
+import StopBtn from "../StopBtn";
+import ResetBtn from "../ResetBtn";
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+    // this.state = { curNum: 1 };
+    this.state = { curNum: 0, started: false };
+  }
+  showStop = () => {
+    this.timer = setInterval(() => 
+      this.setState({
+        curNum: this.state.curNum + 1
+    }), 1000);
+    this.setState({ started: true });
+  }
+  showStart = () => {
+    clearInterval(this.timer);
+    this.setState({ started: false });
+  }
+  resetNum = () => {
+    this.setState({ curNum: 0 });
+  }
   render() {
-    return (
-      <div><i className="fas fa-address-book"></i></div>
+    const {started} = this.state;
+    return started ? (
+        <div>
+          <h1>{this.state.curNum}</h1>
+          <StopBtn changeToStart={this.showStart} />
+          <ResetBtn reset={this.resetNum}/>
+        </div>
+    ) : (
+        <div>
+          <h1>{this.state.curNum}</h1>
+          <StartBtn changeToStop={this.showStop} />
+          <ResetBtn reset={this.resetNum}/>
+        </div>
     );
   }
 }
