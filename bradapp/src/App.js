@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import IconPlus from './counterApp/plus.js';
-import IconMinus from './counterApp/minus.js';
+// import IconPlus from './counterApp/plus.js';
+// import IconMinus from './counterApp/minus.js';
 // eslint-disable-next-line
 // import Table from "./Table.js";
 // import Tr from "./Tr.js";
 // import Td from "./Td.js";
+import HW from "./HelloWorld.js";
 
 /*
 class App extends Component {
@@ -137,6 +138,7 @@ class App extends Component {
 }
 */
 
+/*
 class App extends Component {
     // init. state:
     constructor(props) {
@@ -162,6 +164,17 @@ class App extends Component {
         </div>
         </div>);
     }
+}
+*/
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {<HW />}
+      </div>
+    );
+  }
 }
 
 export default App;
