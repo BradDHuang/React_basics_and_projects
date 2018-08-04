@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 // import logo from './logo.svg';
-import './App.css';
+// import './style.css';
 // import IconPlus from './counterApp/plus.js';
 // import IconMinus from './counterApp/minus.js';
 // eslint-disable-next-line
 // import Table from "./Table.js";
 // import Tr from "./Tr.js";
 // import Td from "./Td.js";
-import HW from "./HelloWorld.js";
+// import HW from "../HW";
 
 /*
 class App extends Component {
@@ -167,6 +167,7 @@ class App extends Component {
 }
 */
 
+/*
 class App extends Component {
   render() {
     return (
@@ -178,7 +179,21 @@ class App extends Component {
 }
 
 export default App;
+*/
 
+
+import React, {Component} from "react";
+import "./style.css";
+
+class App extends Component {
+  render() {
+    return (
+      <div><i className="fas fa-address-book"></i></div>
+    );
+  }
+}
+
+export default App;
 
 
 
