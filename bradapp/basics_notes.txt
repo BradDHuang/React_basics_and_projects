@@ -25,6 +25,47 @@ Objects are not valid as a React child (found: object with keys {a, b, c}).
 If you meant to render a collection of children, use an array instead.
 
 
+React itself does not have any way to fetch data 
+since it is just a view library to build web UI. 
+In that case you need to use external libraries to do that.
+e.g.
+    axios
+    axios is a promise based HTTP client for the browser and node.js, 
+    and it is also one of the most popular and most common used library to send HTTP request in React.
+    
+
+The alt attribute 
+    provides alternative information for an image if a user for some reason cannot view it.
+    e.g.
+    <img alt="info" />
+    
+The <thead> tag 
+    is used to group header content (<th>) in an HTML table.
+    
+
+array literals:
+    e.g.
+    var parts = ['shoulders', 'knees']; 
+    var lyrics = ['head', ...parts, 'and', 'toes']; 
+    // ["head", "shoulders", "knees", "and", "toes"]
+    
+object literals:
+    e.g.
+    var obj1 = { foo: 'bar', x: 42 };
+    var obj2 = { foo: 'baz', y: 13 };
+    var clonedObj = { ...obj1 }; // Object { foo: "bar", x: 42 }
+    var mergedObj = { ...obj1, ...obj2 }; // Object { foo: "baz", x: 42, y: 13 }
+    
+
+componentDidMount() 
+    is invoked immediately after a component is mounted (inserted into the tree). 
+    Initialization that requires DOM nodes should go here. 
+If you need to load data from a remote endpoint, 
+    this is a good place to instantiate the network request.
+    
+    
+
+
 
 
 

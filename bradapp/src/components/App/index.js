@@ -181,7 +181,7 @@ class App extends Component {
 export default App;
 */
 
-
+/*
 import React, {Component} from "react";
 import "./style.css";
 
@@ -220,9 +220,62 @@ class App extends Component {
 }
 
 export default App;
+*/
 
 
+import React, {Component} from "react";
+import axios from "axios";
 
+function List(props) {
+  const imgStyle = { width: 100, height: 100 }
+  return (
+    <tr>
+      <td>{props.id}</td>
+      <td>{props.login}</td>
+      <td>
+        <img style={imgStyle} src={props.avatar_url} alt={props.avatar_url} />
+      </td>
+    </tr>
+  );
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: [] }; // result data type.
+  }
+  componentDidMount() {
+    axios({ method: "get", url: "https://api.github.com/users?per_page=100"})
+      .then(response => {
+        console.log(response);
+        this.setState({ data: response.data });
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err);
+      });
+  }
+  render() {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.data.map((item, index) => {
+            return <List key={item.id} {...item} />;
+          })}
+        </tbody>
+      </table>
+    );
+  }
+}
+
+export default App;
 
 
 
