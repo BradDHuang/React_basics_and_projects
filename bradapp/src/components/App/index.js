@@ -185,10 +185,6 @@ export default App;
 import React, {Component} from "react";
 import "./style.css";
 
-import StartBtn from "../StartBtn";
-import StopBtn from "../StopBtn";
-import ResetBtn from "../ResetBtn";
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -211,17 +207,13 @@ class App extends Component {
   }
   render() {
     const {started} = this.state;
-    return started ? (
+    return (
         <div>
-          <h1>{this.state.curNum}</h1>
-          <StopBtn changeToStart={this.showStart} />
-          <ResetBtn reset={this.resetNum}/>
-        </div>
-    ) : (
-        <div>
-          <h1>{this.state.curNum}</h1>
-          <StartBtn changeToStop={this.showStop} />
-          <ResetBtn reset={this.resetNum}/>
+          <h1 className="counter">{this.state.curNum}</h1>
+          <div className="btns">
+            <button className="span" onClick={started? this.showStart : this.showStop}>{started? "STOP" : "START"}</button>
+            <button className="span" onClick={this.resetNum}>RESET</button>
+          </div>
         </div>
     );
   }
