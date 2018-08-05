@@ -225,11 +225,12 @@ export default App;
 
 import React, {Component} from "react";
 import axios from "axios";
+import "./style.css"
 
 function List(props) {
   const imgStyle = { width: 100, height: 100 }
   return (
-    <tr>
+    <tr onClick={props.showDetails}>
       <td>{props.id}</td>
       <td>{props.login}</td>
       <td>
@@ -242,7 +243,7 @@ function List(props) {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] }; // result data type.
+    this.state = { data: [], clickedAUser: false }; // result data type.
   }
   componentDidMount() {
     axios({ method: "get", url: "https://api.github.com/users?per_page=100"})
@@ -255,8 +256,34 @@ class App extends Component {
         alert(err);
       });
   }
+  
+  showUserDetails = (username) => {
+    this.setState({ clickedAUser: true});
+    axios({ method: "get", url: "https://api.github.com/users/" + username })
+      .then(response => {
+        console.log(response);
+        this.setState({ Name: response.data.name,
+                        Location: response.data.location,
+                        Following: response.data.following,
+                        Followers: response.data.followers
+        });
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err);
+      });
+  }
+  
   render() {
+    const {clickedAUser} = this.state;
+    const name = this.state.Name;
+    const location = this.state.Location;
+    const following = this.state.Following;
+    const followers = this.state.Followers;
     return (
+      <div>
+      <div className="table">
+      <h3>{"List"}</h3>
       <table>
         <thead>
           <tr>
@@ -267,10 +294,21 @@ class App extends Component {
         </thead>
         <tbody>
           {this.state.data.map((item, index) => {
-            return <List key={item.id} {...item} />;
+            return <List key={item.id} {...item} showDetails={() => this.showUserDetails(item.login)} />;
           })}
         </tbody>
       </table>
+      </div>
+        <div>
+          <h3 className="details_h3">{"User Details:"}</h3>
+          <div className="details">
+            {clickedAUser? `Name: ${name}` : ""}<br />
+            {clickedAUser? `Location: ${location}` : ""}<br />
+            {clickedAUser? `Following: ${following}` : ""}<br />
+            {clickedAUser? `Followers: ${followers}` : ""}<br />
+          </div>
+        </div>
+      </div>
     );
   }
 }

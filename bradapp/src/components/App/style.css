@@ -46,6 +46,29 @@
   text-align: center;
 }
 
+.details {
+  /*text-align: left;*/
+  border: 0.5px solid black;
+  height: 360px;
+  margin-left: 400px;
+  margin-top: 20px;
+  width: 300px;
+  line-height: 2;
+}
+.details_h3 {
+  margin-left: 400px;
+  margin-top: 10px;
+}
+
+.table {
+  /*width: 300px;*/
+  float: left;
+  margin-top: -20px;
+  margin-left: 20px;
+}
+
+
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
