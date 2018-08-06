@@ -222,7 +222,7 @@ class App extends Component {
 export default App;
 */
 
-
+/*
 import React, {Component} from "react";
 import axios from "axios";
 import "./style.css"
@@ -314,6 +314,150 @@ class App extends Component {
 }
 
 export default App;
+*/
+
+
+import React, {Component} from "react";
+import "./style.css"
+
+function Msg(props) {
+    return (
+      <div>{props.msg}</div>
+    );
+}
+  
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { username: "", password: "", loggedIn: false, authenticated: false, showMsg: false };
+  }
+  login = () => {
+    this.setState({ loggedIn: true });
+  }
+  logout = () => {
+    this.setState({ loggedIn: false });
+  }
+  handleUsername = e => {
+    this.setState({ username: e.target.value });
+  }
+  handlePassword = e => {
+    this.setState({ password: e.target.value });
+  }
+  /*
+  notEmpty = () => {
+    return this.state.username.length > 0 && this.state.password.length > 0;
+  }
+  */
+  validateInfo = () => {
+    
+    let user = this.state.username;
+    let date = new Date();
+    let month = date.getMonth() + 1;
+    month = (month < 10) ? ("0" + month) : month;
+    let day1 = date.getDate();
+    let day2 = day1 + 1;
+    let day3 = day1 - 1;
+    // corner cases to be fixed: e.g. the beginning / end date of a month.
+    day1 = (day1 < 10) ? ("0" + day1) : day1;
+    
+    day2 = (day2 < 10) ? ("0" + day2) : day2;
+    
+    day3 = (day3 < 10) ? ("0" + day3) : day3;
+    let match1 = "" + date.getFullYear() + month + day1;
+    let match2 = "" + date.getFullYear() + month + day2;
+    let match3 = "" + date.getFullYear() + month + day3;
+    let pw = this.state.password;
+    if ( (user === "today" && pw === match1)  
+          || (user === "tomorrow" && pw === match2)
+          || (user === "yesterday" && pw === match3) ) {
+      this.setState({authenticated: true});   
+      this.setState({loggedIn: true});
+      this.setState({showMsg: false});
+      
+    } else {
+      
+      this.setState({showMsg: true});
+    }
+  }
+  resetAuth = () => {
+    this.setState({ authenticated: false });
+    this.setState({ loggedIn: false });
+    this.setState({ username: "" });
+    this.setState({ password: "" });
+    
+  }
+  
+  handleSubmit = e => {
+    e.preventDefault();
+    // console.log(this.state);
+  }
+  render() {
+    const {loggedIn, authenticated, showMsg} = this.state;
+    return (<form className="form_style" onSubmit={this.handleSubmit}>
+              {authenticated &&
+              <div>
+                <h3 className="loggedin">{"You loggedin now."}</h3>
+                <br />
+                <div>
+                  <button type="submit" onClick={this.resetAuth}>
+                    {"Logout"}
+                  </button>
+                </div>
+              </div>
+              }
+              {!authenticated && 
+              <div>
+                <h3>{!loggedIn && "Login required."}</h3>
+                <div>
+                  <label className="labels">
+                    Username 
+                    <input className="inputval"
+                      type="text" 
+                      value={this.state.username}
+                      onChange={this.handleUsername}
+                    />
+                  </label>
+                  <label className="labels">
+                    Password
+                    <input className="inputval"
+                      type="text"
+                      value={this.state.password}
+                      onChange={this.handlePassword}
+                    />
+                  </label>
+                </div>
+                <br />
+                <div>
+                  {(!loggedIn) &&
+                  <button type="submit" onClick={this.validateInfo}>
+                    {"Login"}
+                  </button>
+                  }
+                  {(showMsg) && 
+                    <div className="msg">
+                    <br />
+                    <h3>
+                    <Msg msg="Incorrect Username and/or Password! Please try again."/>
+                    </h3>
+                    </div>
+                  }
+                </div>
+              </div>
+              }
+            </form>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
+
+
+
 
 
 
