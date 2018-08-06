@@ -316,7 +316,7 @@ class App extends Component {
 export default App;
 */
 
-
+/*
 import React, {Component} from "react";
 import "./style.css"
 
@@ -348,6 +348,7 @@ class App extends Component {
     return this.state.username.length > 0 && this.state.password.length > 0;
   }
   */
+  /*
   validateInfo = () => {
     
     let user = this.state.username;
@@ -450,8 +451,74 @@ class App extends Component {
 }
 
 export default App;
+*/
 
 
+import React, {Component} from "react";
+import "./style.css";
+
+// let todoId = 0;
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { todo: "", todos: [] };
+  }
+  
+  handleInputChange = e => {
+    this.setState({ todo: e.target.value });
+    // const {todo} = this.state;
+    // todo.id = todoId++;
+    // todo.completed = false;
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({
+      todos: [...this.state.todos, this.state.todo],
+      todo: ""
+    });
+  }
+  /*
+  toggleTodo = (id) => {
+    const {todos} = this.state;
+    todos.map(todo => {
+      if (todo.id !== id) {
+        return todo;
+      }
+      return ({
+        ...todo, completed: !todo.completed
+      });
+    });
+  }
+  */
+  render() {
+    const {todos} = this.state;
+    return (
+      <div>
+        <form className="form_style" onSubmit={this.handleSubmit}>
+          <label className="labels">
+          To-Do
+            <input className="inputval" value={this.state.todo} onChange={this.handleInputChange} />
+          </label>
+          <button>ADD</button>
+        </form>
+        <div className="todos">
+          <ul>
+            {todos.map((todo, index) => {
+              return (<li key={index}
+                          // style={{textDecoration: todo.completed ? "line-through" : "none"}}
+                      >
+                {todo}
+              </li>);
+            })}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default App;
 
 
 
