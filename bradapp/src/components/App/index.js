@@ -457,61 +457,63 @@ export default App;
 import React, {Component} from "react";
 import "./style.css";
 
-// let todoId = 0;
+const TodoForm = (props) => {
+  let input;
+  // ref
+  // Refs provide a way to access DOM nodes or React elements created in the render method.
+  return (<div className="form_style">
+            <label className="labels">
+              To-Do
+              <input className="inputval" ref={ node => input = node } />
+            </label>
+            <button onClick={ () => {props.addTodo(input.value); 
+                              input.value = "";} 
+                            }>ADD</button>
+          </div>
+  );
+};
+
+let index = 0;
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { todo: "", todos: [] };
+    // this.state = { todo: "", todos: [] };
+    this.state = { todos: [] };
   }
   
-  handleInputChange = e => {
-    this.setState({ todo: e.target.value });
-    // const {todo} = this.state;
-    // todo.id = todoId++;
-    // todo.completed = false;
+  addTodo = (val) => {
+    const todo = { text: val, id: index++, completed: false };
+    let cur = this.state.todos;
+    cur.push(todo);
+    this.setState({ todos: cur });
   }
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({
-      todos: [...this.state.todos, this.state.todo],
-      todo: ""
-    });
-  }
-  /*
+  
   toggleTodo = (id) => {
     const {todos} = this.state;
-    todos.map(todo => {
-      if (todo.id !== id) {
-        return todo;
-      }
-      return ({
-        ...todo, completed: !todo.completed
-      });
-    });
+    
+    this.setState({ todos: [...todos.slice(0, id), 
+                           {...todos[id], completed: !todos[id].completed}, 
+                            ...todos.slice(id + 1)]
+                 });
   }
-  */
+  
   render() {
     const {todos} = this.state;
     return (
       <div>
-        <form className="form_style" onSubmit={this.handleSubmit}>
-          <label className="labels">
-          To-Do
-            <input className="inputval" value={this.state.todo} onChange={this.handleInputChange} />
-          </label>
-          <button>ADD</button>
-        </form>
+        <TodoForm addTodo={this.addTodo} />
         <div className="todos">
-          <ul>
-            {todos.map((todo, index) => {
-              return (<li key={index}
-                          // style={{textDecoration: todo.completed ? "line-through" : "none"}}
-                      >
-                {todo}
-              </li>);
-            })}
-          </ul>
+        <ul>
+          {todos.map((todo, index) => {
+            return (<li 
+                      key={todo.id} 
+                      onClick={() => (this.toggleTodo(todo.id))} 
+                      style={{textDecoration: todo.completed ? "line-through" : "none"}}>
+                      {todo.text}
+                    </li>);
+          })}
+        </ul>
         </div>
       </div>
     );
@@ -519,6 +521,8 @@ class App extends Component {
 }
 
 export default App;
+
+
 
 
 
