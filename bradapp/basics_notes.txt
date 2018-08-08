@@ -170,7 +170,28 @@ e.g.
     <Route path="/login" component={WithRouterLogin} />
     
 
-
+e.g.
+    The :number part of the path /roster/:number 
+    means that the part of the pathname that comes after /roster/ 
+    will be captured and stored as 
+    //******
+    match.params.number
+    //******
+    
+    e.g.
+    the pathname /roster/6 will generate a params object 
+    
+    component can use the 
+    //******
+    props.match.params (object)
+    //******
+    to determine which data should be rendered.
+    
+    // e.g. this.props.match.params.number
+    
+    
+    
+    
 
 
 
