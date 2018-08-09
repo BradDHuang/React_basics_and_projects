@@ -41,6 +41,13 @@ const TodoForm = (props) => {
     }
   });
   
+  // JS Array method review:
+  // The filter() method creates a new array 
+  // with all elements that pass the test 
+  // implemented by the provided function.
+  
+  // If no elements pass the test, an empty array will be returned.
+  
   
   // avoid using ref for better performance.
   // instead, use a class component to add todo.
