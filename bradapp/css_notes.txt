@@ -7,6 +7,9 @@ Compared to display: inline, the major difference is that
             display: inline-block allows to set a width and height on the element.
             
 
+Modal:
+
+https://www.w3schools.com/howto/howto_css_modals.asp
 
 
 
