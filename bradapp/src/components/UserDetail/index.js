@@ -10,9 +10,14 @@ class UserDetail extends Component {
     super(props);
     this.state = {clicked: false}; // result data type.
   }
-  show = (username) => {
+  
+  // show = (username) => {
+  componentDidMount() {
+  // componentDidMount is the right place to get some data to render the page
+  
     this.setState({ clicked: true});
-    axios({ method: "get", url: "https://api.github.com/users/" + username })
+    // axios({ method: "get", url: "https://api.github.com/users/" + username })
+    axios({ method: "get", url: "https://api.github.com/users/" + this.props.match.params.login })
       .then(response => {
         console.log(response);
         this.setState({ name: response.data.name,
@@ -38,7 +43,7 @@ class UserDetail extends Component {
             <Link to="/"><button>Home</button></Link>
             <br />
             <br />
-            <button onClick={() => this.show(this.props.match.params.login)}>Click to get User Details</button>
+            
             <h3 className="details_h3">{"User Details:"}</h3>
             <div className="details">
                 {clicked? `Name: ${name}` : ""}<br />
