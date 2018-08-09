@@ -189,6 +189,17 @@ e.g.
     
     // e.g. this.props.match.params.number
     
+    For more than one params:
+    e.g. /:first/:last 
+    and you will get 2 params.
+
+    More: match.url
+          match.path
+          match.isExact
+          
+    
+    
+    
     
     
     
