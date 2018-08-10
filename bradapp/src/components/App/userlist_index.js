@@ -22,7 +22,23 @@ class Home extends Component {
     return (
         <div className="form_style">
             <h2>{"Home Page: You logged in."}</h2>
-            <Link to="/users">UserList</Link>
+            <Link to="/list">UserList</Link>
+        </div>
+    );
+  }
+}
+
+class OtherPage extends Component {
+  componentDidMount() {
+    if (!this.props.authenticated) {
+      this.props.history.push('/login');
+    }
+  }
+  render() {
+    return (
+        <div className="form_style">
+            <h2>{"Other Page: You logged in."}</h2>
+            <Link to="/">Home</Link>
         </div>
     );
   }
@@ -65,11 +81,14 @@ class Login extends Component {
 
 const WithRouterLogin = withRouter(Login);
 const WithRouterHome = withRouter(Home);
+const WithRouterOtherPage = withRouter(OtherPage);
+const WithRouterList = withRouter(UserList);
+const WithRouterDetail = withRouter(UserDetail);
 
 class App extends Component {
   constructor(props) {
       super(props);
-      this.state = { authenticated: false};
+      this.state = { authenticated: false, clickedAUser: false };
   }
   
   loginHandler = (username, password) => {
@@ -81,6 +100,9 @@ class App extends Component {
       } else {
           alert("Incorrect username/password");
       }
+  }
+  clickedAUser = () => {
+      this.setState({ clickedAUser: true });
   }
   render() {
     
@@ -95,6 +117,7 @@ class App extends Component {
                         <li>
                             <Link to="/login">Login</Link>
                         </li>
+                        
                     </ul>
                 </nav>
                 <Switch>
@@ -102,21 +125,39 @@ class App extends Component {
                         //   component={Home}
                         render={ () => (<WithRouterHome
                                             authenticated={this.state.authenticated} 
-                                            matched={this.state.matched}
+                                            // matched={this.state.matched}
                                         />
                         )}
                     />
-                    <Route exact={true} path="/users" component={UserList} />
-                    <Route path="/users/:login" component={UserDetail} />
                     
-                    <Route exact={true} 
+                    <Route path="/list/:userId" 
+                        // component={UserDetail} 
+                        render={ ({match}) => (<WithRouterDetail
+                                                   match={match}
+                                                   authenticated={this.state.authenticated}
+                                               />) }
+                    />
+                    <Route path="/list" 
+                        // component={UserList} 
+                        // render={ () => (<UserList />) }
+                        render={ () => (<WithRouterList
+                                            clickedAUser={this.clickedAUser}
+                                            authenticated={this.state.authenticated}
+                                        />) }
+                    />
+                    <Route 
                         path="/login" 
                         // component={Login}
                         render={ () => (<WithRouterLogin 
                                             authenticated={this.state.authenticated} 
-                                            matched={this.state.matched}
+                                            // matched={this.state.matched}
                                             loginHandler={this.loginHandler}
                                         />) }
+                    />
+                    
+                    <Route path="/:otherPage" 
+                        // component={OtherPage} 
+                        render={ () => (<WithRouterOtherPage authenticated={this.state.authenticated} />) }
                     />
                 </Switch>
             </div>

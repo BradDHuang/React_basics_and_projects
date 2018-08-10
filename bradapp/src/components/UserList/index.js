@@ -19,21 +19,27 @@ function List(props) {
 class UserList extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [], clickedAUser: false }; // result data type.
+    this.state = { data: [] }; // result data type.
   }
   componentDidMount() {
-    axios({ method: "get", url: "https://api.github.com/users?per_page=100"})
-      .then(response => {
-        console.log(response);
-        this.setState({ data: response.data });
-      })
-      .catch(err => {
-        console.log(err);
-        alert(err);
-      });
+    if (!this.props.authenticated) {
+      this.props.history.push('/login');
+    }
+    else {
+      axios({ method: "get", url: "https://api.github.com/users?per_page=100"})
+        .then(response => {
+          console.log(response);
+          this.setState({ data: response.data });
+        })
+        .catch(err => {
+          console.log(err);
+          alert(err);
+        });
+    }
   }
   showUserDetails = (username) => {
-    // <Link to={`/users/${username}`}>{username}</Link>;
+    this.props.clickedAUser();
+    this.props.history.push(`/list/${username}`);
   }
   
   render() {

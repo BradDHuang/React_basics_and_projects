@@ -17,21 +17,26 @@ class UserDetail extends Component {
   // If you need to load data from a remote endpoint, 
   // this is a good place to instantiate the network request.
   
-    this.setState({ clicked: true});
-    // axios({ method: "get", url: "https://api.github.com/users/" + username })
-    axios({ method: "get", url: "https://api.github.com/users/" + this.props.match.params.login })
-      .then(response => {
-        console.log(response);
-        this.setState({ name: response.data.name,
-                        location: response.data.location,
-                        following: response.data.following,
-                        followers: response.data.followers
+    if (!this.props.authenticated) {
+      this.props.history.push('/login');
+    }
+    else {
+      this.setState({ clicked: true});
+      // axios({ method: "get", url: "https://api.github.com/users/" + username })
+      axios({ method: "get", url: "https://api.github.com/users/" + this.props.match.params.userId })
+        .then(response => {
+          console.log(response);
+          this.setState({ name: response.data.name,
+                          location: response.data.location,
+                          following: response.data.following,
+                          followers: response.data.followers
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          alert(err);
         });
-      })
-      .catch(err => {
-        console.log(err);
-        alert(err);
-      });
+    }
   }
   
   render() {
@@ -39,7 +44,7 @@ class UserDetail extends Component {
     return (
         <div className="form_style">
             <h2>{"User Details Page"}</h2>
-            <Link to="/users"><button>UserList</button></Link>
+            <Link to="/list"><button>UserList</button></Link>
             <br />
             <br />
             <Link to="/"><button>Home</button></Link>
