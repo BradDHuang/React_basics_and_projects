@@ -184,6 +184,7 @@ e.g.
     component can use the 
     //******
     props.match.params (object)
+    // e.g. <p>match.params: {JSON.stringify(match.params)}</p>
     //******
     to determine which data should be rendered.
     
@@ -194,6 +195,7 @@ e.g.
     and you will get 2 params.
 
     More: match.url
+            e.g. <Link to={`${match.url}/1`}>go to user 1</Link>
           match.path
           match.isExact
           
@@ -211,9 +213,67 @@ e.g.
     // Every component which is in Routes component props has 3 more props by default: match , location, history.
     
     
+    location.search:
+    Query Parameters
+    e.g.
+    http://www.example.com:3000/users/foo?key1=40&key2=bar
+    // {key1: '40', key2: 'bar'}
+    ? // indicates the start point of query parameters
+    & // separates different query parameters
     
+    
+    We can also use <Route>'s render props to render component.
+    e.g.1
+    <Route
+        path="/:pageName"
+        render={props => <p>match.url: {props.match.url}</p>}
+    />
+    e.g.2
+    <Route
+        path={`${match.path}/:userId`}
+        render={({match}) => (
+          <div>
+            <h3> {match.params.userId} </h3>
+          </div>
+        )}
+    />
 
 
+    <Redirect>
+    // import {Redirect} from "react-router-dom"
+    e.g.
+    <Redirect to={ { pathname: '/' } } />
+    <Redirect to={ { pathname: "/login", state: { from: props.location } } } />
+    // this.props.location.state
+    
+    // The <nav> tag defines a set of navigation links. 
+    
+    // alt: Use history.push()
+    e.g.
+    // class Login ...
+    componentDidMount() {
+        if (this.props.authenticated) {
+            this.props.history.push('/');
+        }
+    }
+    // withRouter()
+    
+    
+    Review:
+    These methods are called in the following order 
+    when an instance of a component is being created and inserted into the DOM:
+
+        constructor()
+        render()
+        componentDidMount()
+        
+        // Updating
+        shouldComponentUpdate()
+        render()
+        componentDidUpdate()
+        
+    
+    
 
 
 

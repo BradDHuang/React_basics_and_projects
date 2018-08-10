@@ -14,6 +14,8 @@ class UserDetail extends Component {
   // show = (username) => {
   componentDidMount() {
   // componentDidMount is the right place to get some data to render the page
+  // If you need to load data from a remote endpoint, 
+  // this is a good place to instantiate the network request.
   
     this.setState({ clicked: true});
     // axios({ method: "get", url: "https://api.github.com/users/" + username })
