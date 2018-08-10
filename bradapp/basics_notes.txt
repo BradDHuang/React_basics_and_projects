@@ -198,8 +198,17 @@ e.g.
           match.isExact
           
     
+    render syntax:
+    If we using the render syntax, the component won't have those 3 props:
+        1. match
+        2. location 
+        3. history
+    you have to use withRouter to get that.
+    e.g. 
+    <Route path="/" render={() => <Home />} />
     
-    
+    // <Route path="/" component={Home} />
+    // Every component which is in Routes component props has 3 more props by default: match , location, history.
     
     
     
