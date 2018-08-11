@@ -273,8 +273,20 @@ e.g.
         componentDidUpdate()
         
     
+    CSS Sprites:
     
+    https://www.w3schools.com/css/css_image_sprites.asp
 
+
+    Lazy Loading.
+    
+    https://webpack.js.org/guides/lazy-loading/
+    
+    
+    
+    
+    
+    
 
 
 
