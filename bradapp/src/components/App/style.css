@@ -47,7 +47,7 @@
 }
 
 .details {
-  /*text-align: left;*/
+  text-align: center;
   border: 0.5px solid black;
   height: 300px;
   margin-left: 320px;
@@ -127,6 +127,16 @@
 .txt {
   /*height: auto;*/
   width: 500px;
+}
+
+.question {
+  color: blue;
+  line-height: 2;
+  /*text-align: center;*/
+  margin-left: 200px;
+}
+.question:hover {
+  text-decoration: underline;
 }
 
 
