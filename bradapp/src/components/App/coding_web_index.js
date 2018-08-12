@@ -8,6 +8,10 @@ class App extends Component {
         this.state = { questions: [] };
     }
     componentDidMount() {
+        
+        // Run on http://react-basics-and-projects-happitt.c9users.io/
+        // vs. https
+        
         axios({ method: "get", url: "http://api.haochuan.io/oj/problems" })
             .then(response => {
                 console.log(response);
