@@ -10,7 +10,7 @@ import Login from "../CodingWebLogin";
 class Details extends Component {
     constructor(props) {
         super(props);
-        this.state = { };
+        this.state = { answer: "", rightAns: false, wrongAns: false };
     }
     componentDidMount() {
         if (!this.props.authenticated) {
@@ -33,17 +33,76 @@ class Details extends Component {
                 });
         }
     }
+    handleSubmit = (e) => {
+        e.preventDefault();
+    }
+    handleAnswer = (e) => {
+        this.setState({ answer: e.target.value });
+    }
+    validateAnswer = () => {
+        let answer = this.state.answer;
+        // let booleanAns = (answer === "true");
+        // console.log(typeof(JSON.parse(`${answer}`)));
+        // reset:
+        this.setState({ rightAns: false });
+        this.setState({ wrongAns: false });
+        axios({
+            method: "post",
+            // url: "http://api.haochuan.io/oj/problems/:problemId/solution?noError=1",
+            
+            // get the specific problemId and pass it to the url:
+            url: "http://api.haochuan.io/oj/problems/" + this.props.match.params.problemId + "/solution?noError=1",
+            
+            data: { answer: (`${answer}` === "true" ? true : false) }
+        })
+            .then(response => {
+                console.log(response);
+                // console.log(typeof(response.data.pass)); // boolean
+                if (response.data.pass) {
+                    this.setState({ rightAns: true });
+                } else {
+                    this.setState({ wrongAns: true });
+                }
+                // clean up input:
+                this.setState({ answer: "" });
+            })
+            .catch(err => {
+                console.log(err);
+                this.setState({ answer: "" });
+            });
+    }
     render() {
-        const {id, title, content} = this.state;
+        // const {id, title, content} = this.state;
+        const {title, content} = this.state;
         return (
-            <div>
+            // <p>{this.props.clicked? `Id: ${id}` : ""}</p>
+            <form onSubmit={this.handleSubmit}>
                 { !this.props.errorMsg &&
                 <div className="details">
                     <h3>{this.props.clicked? `Title: ${title}` : ""}</h3>
-                    <p>{this.props.clicked? `Id: ${id}` : ""}</p>
                     <p>{this.props.clicked? `Content: ${content}` : ""}</p>
+                    <hr />
+                    <label>
+                        Type your answer here:
+                        <br />
+                        <input type="text" value={this.state.answer} onChange={this.handleAnswer} />
+                    </label>
+                    <br />
+                    <button type="submit" onClick={this.validateAnswer}>Submit Answer</button>
                     <br />
                     <Link to="/">Back</Link>
+                    { this.state.rightAns &&
+                        <div style={{color: "green"}}>
+                            <br />
+                            <h3>{"Your answer is right!"}</h3>
+                        </div>
+                    }
+                    { this.state.wrongAns &&
+                        <div style={{color: "red"}}>
+                            <br />
+                            <h3>{"Your answer is wrong, please try again."}</h3>
+                        </div>
+                    }
                 </div>
                 }
                 { this.props.errorMsg && 
@@ -52,7 +111,7 @@ class Details extends Component {
                         {"Error: Request failed with status code 500 (Internal Server Error)! Please refresh the page and try again later."}
                     </div> 
                 }
-            </div>
+            </form>
         );
     }
 }
