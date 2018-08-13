@@ -3,6 +3,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import {BrowserRouter, Route, Switch, withRouter} from "react-router-dom";
 import "./style.css";
+import Login from "../CodingWebLogin";
 
 class Details extends Component {
     constructor(props) {
@@ -75,6 +76,7 @@ class Home extends Component {
 
 const WithRouterHome = withRouter(Home);
 const WithRouterDetails = withRouter(Details);
+const WithRouterLogin = withRouter(Login);
 
 class App extends Component {
     constructor(props) {
@@ -93,6 +95,9 @@ class App extends Component {
                             render={ () => (<WithRouterHome 
                                 clickedAProblem={this.clickedAProblem}
                             />) }
+                        />
+                        <Route path="/login" 
+                            render={ () => (<WithRouterLogin />) }
                         />
                         <Route path="/:problemId"
                             render={ ({match}) => (<WithRouterDetails 
