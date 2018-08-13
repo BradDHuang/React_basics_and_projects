@@ -283,7 +283,12 @@ e.g.
     https://webpack.js.org/guides/lazy-loading/
     
     
+    NOTE: 
+    For all apis we have, if you add a query parameter
     
+    noError=1 // ?noError=1
+    
+    in the URL, you will never get server error again.
     
     
     

@@ -17,7 +17,8 @@ class Details extends Component {
             this.props.history.push("/login");
         } else {
             axios({ method: "get", 
-                    url: "http://api.haochuan.io/oj/problems/" + this.props.match.params.problemId
+                    // url: "http://api.haochuan.io/oj/problems/" + this.props.match.params.problemId
+                    url: "http://api.haochuan.io/oj/problems/" + this.props.match.params.problemId + "?noError=1"
             })
                 .then(response => {
                     console.log(response);
@@ -69,7 +70,8 @@ class Home extends Component {
         // Run on http://react-basics-and-projects-happitt.c9users.io/
         // vs. https
         
-            axios({ method: "get", url: "http://api.haochuan.io/oj/problems" })
+            // axios({ method: "get", url: "http://api.haochuan.io/oj/problems" })
+            axios({ method: "get", url: "http://api.haochuan.io/oj/problems?noError=1" })
                 .then(response => {
                     console.log(response);
                     this.setState({ questions: response.data.questions });
