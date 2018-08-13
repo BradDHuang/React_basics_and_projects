@@ -1,11 +1,17 @@
 
 import React, {Component} from "react";
 import axios from "axios";
+// import { Link } from "react-router-dom";
 
 class Login extends Component {
     constructor(props) {
         super(props);
         this.state = { username: "", password: "", matched: false, showMsg: false };
+    }
+    componentDidMount() {
+        if (this.props.authenticated) {
+            this.props.history.push("/");
+        }
     }
     handleSubmit = (e) => {
         e.preventDefault();
@@ -34,6 +40,10 @@ class Login extends Component {
                 this.setState({ matched: true });
                 // console.log(this.state.matched);
                 this.setState({ showMsg: false });
+                
+                this.props.loginHandler();
+                
+                this.props.history.push("/");
             } )
             .catch( err => {
                 this.setState({ showMsg: true });
@@ -55,18 +65,22 @@ class Login extends Component {
         }
         */
     }
+    /*
     resetAuth = () => {
         this.setState({ matched: false });
         this.setState({ username: "" });
         this.setState({ password: "" });
     }
+    */
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            /*
                 { this.state.matched &&
                     <div>
                         <h3>{"You loggedin now."}</h3>
-                        <br />
+                        <nav style={{ margin: "50px 0px" }}>
+                            <Link to="/">Problems</Link>
+                        </nav>
                         <div>
                           <button type="submit" onClick={this.resetAuth}>
                           Logout
@@ -74,6 +88,9 @@ class Login extends Component {
                         </div>
                     </div>
                 }
+            */
+            <form onSubmit={this.handleSubmit}>
+                
                 { !this.state.matched &&
                 <div>
                     <label>
@@ -86,7 +103,8 @@ class Login extends Component {
                     </label>
                     <button type="submit" onClick={this.validateInfo}>Login</button>
                     { this.state.showMsg && 
-                        <div>
+                        <div style={{color: "red"}}>
+                            <br />
                             {"Incorrect Username and/or Password! Please try again."}
                         </div> 
                     }
