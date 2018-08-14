@@ -2,21 +2,10 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-function List(props) {
-  return (
-    <tr>
-      <td>{props.from}</td>
-      <td>{props.address}</td>
-      <td>{props.tag}</td>
-      <td>{props.read}</td>
-      <td>{props.subject}</td>
-    </tr>
-  );
-}
 function Subject(props) {
     return (
         <ul>
-            <li>{props.subject}</li>
+            <li onClick={props.clickedASubject}>{props.subject}</li>
         </ul>
     );
 }
@@ -24,28 +13,31 @@ function Subject(props) {
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {emails: [], inbox: 0, inboxs: [], deleted: 0, deleteds: [], sent: 0, sents: [], drafts: 0, draftsList:[], showMsg: false, displays: []};
+        this.state = {emails: [], inbox: 0, inboxs: [], deleted: 0, deleteds: [], sent: 0, sents: [], 
+            drafts: 0, draftsList:[], showMsg: false, displays: [], showDetails: false,
+            subject: "", from: "", time: "", message: ""
+        };
     }
     componentDidMount() {
         axios({method: "get", url: "http://api.haochuan.io/emails"})
             .then(response => {
-                console.log(response.data);
+                console.log(response);
                 this.setState({emails: response.data.emailData});
                 this.state.emails.forEach((email) => {
                     if (email.tag === "inbox") {
                         if (email.read === "false") {
                             this.setState({ inbox: this.state.inbox + 1 });
                         }
-                        this.setState({ inboxs: [...this.state.inboxs, {subject: email.subject}] });
+                        this.setState({ inboxs: [...this.state.inboxs, email] });
                     } else if (email.tag === "deleted") {
                         this.setState({ deleted: this.state.deleted + 1 });
-                        this.setState({ deleteds: [...this.state.deleteds, {subject: email.subject}] });
+                        this.setState({ deleteds: [...this.state.deleteds, email] });
                     } else if (email.tag === "sent") {
                         this.setState({ sent: this.state.sent + 1 });
-                        this.setState({ sents: [...this.state.sents, {subject: email.subject}] });
+                        this.setState({ sents: [...this.state.sents, email] });
                     } else if (email.tag === "drafts") {
                         this.setState({ drafts: this.state.drafts + 1 });
-                        this.setState({ draftsList: [...this.state.draftsList, {subject: email.subject}] });
+                        this.setState({ draftsList: [...this.state.draftsList, email] });
                     }
                 });
             })
@@ -85,32 +77,50 @@ class App extends Component {
             this.setState({ displays: this.state.deleteds });
         }
     }
+    clickedASubject = (email) => {
+        console.log(email);
+        
+        // ******
+        console.log(email.subject);
+        // ******
+        
+        this.setState({ showDetails: true });
+        this.setState({ subject: email.subject });
+        this.setState({ from: email.from });
+        this.setState({ time: email.time });
+        this.setState({ message: email.message });
+    }
     render() {
         return (
             <div>
-            {this.state.showMsg && "Nothing here."}
-            {!this.state.showMsg && 
+                {this.state.showMsg && "Nothing here."}
+                {!this.state.showMsg && 
+                    <div>
+                        {this.state.displays.map((email, index) => {
+                            return <Subject key={index} {...email} 
+                                clickedASubject={() => 
+                                    this.clickedASubject(email)
+                                } />;
+                        })}
+                    </div>
+                }
+                {(!this.state.showMsg && this.state.showDetails) && 
+                    <div>
+                        <h3>{this.state.subject}</h3>
+                        <p>{this.state.from}</p>
+                        <p>{this.state.time}</p>
+                        <hr />
+                        <p>{this.state.message}</p>
+                    </div>
+                }
                 <div>
-                    {this.state.displays.map((email, index) => {
-                        return <Subject key={index} {...email} />;
-                    })}
+                    <ul>
+                        <li onClick={ () => this.handleInboxClick()}>Inbox: {this.state.inbox}</li>
+                        <li onClick={ () => this.handleSentClick()}>Sent: {this.state.sent}</li>
+                        <li onClick={ () => this.handleDraftsClick()}>Drafts: {this.state.drafts}</li>
+                        <li onClick={ () => this.handleTrashClick()}>Trash: {this.state.deleted}</li>
+                    </ul>
                 </div>
-            }
-            <table>
-                <thead>
-                    <tr>
-                        <td onClick={ () => this.handleInboxClick()}>Inbox: {this.state.inbox}</td>
-                        <td onClick={ () => this.handleSentClick()}>Sent: {this.state.sent}</td>
-                        <td onClick={ () => this.handleDraftsClick()}>Drafts: {this.state.drafts}</td>
-                        <td onClick={ () => this.handleTrashClick()}>Trash: {this.state.deleted}</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.emails.map((email, index) => {
-                        return <List key={index} {...email} />;
-                    })}
-                </tbody>
-            </table>
             </div>
         );
     }
