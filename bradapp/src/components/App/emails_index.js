@@ -5,7 +5,8 @@ import axios from "axios";
 function Subject(props) {
     return (
         <ul>
-            <li onClick={props.clickedASubject}>{props.subject}</li>
+            <li onClick={props.clickedASubject} 
+                style={{color: (props.read === "false") ? "black" : "grey"}}>{props.subject}</li>
         </ul>
     );
 }
@@ -15,7 +16,7 @@ class App extends Component {
         super(props);
         this.state = {emails: [], inbox: 0, inboxs: [], deleted: 0, deleteds: [], sent: 0, sents: [], 
             drafts: 0, draftsList:[], showMsg: false, displays: [], showDetails: false,
-            subject: "", from: "", time: "", message: ""
+            subject: "", from: "", time: "", message: "", withButton: true, email: {}
         };
     }
     componentDidMount() {
@@ -27,8 +28,10 @@ class App extends Component {
                     if (email.tag === "inbox") {
                         if (email.read === "false") {
                             this.setState({ inbox: this.state.inbox + 1 });
+                            this.setState({ inboxs: [...this.state.inboxs, {...email, read: "false"}] });
+                        } else {
+                            this.setState({ inboxs: [...this.state.inboxs, {...email, read: "true"}] });
                         }
-                        this.setState({ inboxs: [...this.state.inboxs, email] });
                     } else if (email.tag === "deleted") {
                         this.setState({ deleted: this.state.deleted + 1 });
                         this.setState({ deleteds: [...this.state.deleteds, email] });
@@ -46,6 +49,10 @@ class App extends Component {
             });
     }
     handleInboxClick = () => {
+        // clean up when change into a different tag.
+        this.setState({ showDetails: false });
+        this.setState({ withButton: true });
+        
         if (this.state.inbox === 0) {
             this.setState({ showMsg: true });
         } else {
@@ -54,6 +61,8 @@ class App extends Component {
         }
     }
     handleSentClick = () => {
+        this.setState({ showDetails: false });
+        this.setState({ withButton: true });
         if (this.state.sent === 0) {
             this.setState({ showMsg: true });
         } else {
@@ -62,6 +71,8 @@ class App extends Component {
         }
     }
     handleDraftsClick = () => {
+        this.setState({ showDetails: false });
+        this.setState({ withButton: true });
         if (this.state.drafts === 0) {
             this.setState({ showMsg: true });
         } else {
@@ -70,6 +81,8 @@ class App extends Component {
         }
     }
     handleTrashClick = () => {
+        this.setState({ showDetails: false });
+        this.setState({ withButton: false });
         if (this.state.deleted === 0) {
             this.setState({ showMsg: true });
         } else {
@@ -77,11 +90,27 @@ class App extends Component {
             this.setState({ displays: this.state.deleteds });
         }
     }
-    clickedASubject = (email) => {
-        console.log(email);
+    clickedASubject = (email, index) => {
+        if (email.read === "false") {
+            /*
+            this.setState({ inboxs: [
+                    ...this.state.inboxs.slice(0, index), 
+                    {...this.state.inboxs[index], read: "true"},
+                    ...this.state.inboxs.slice(index + 1)
+                ] });
+            */ // Async.
+            this.setState({ inbox: this.state.inbox - 1 });
+            
+        } 
+        console.log("index: " + index);
+        let emailWithIndex = {...email, index};
+        // console.log(emailWithIndex);
+        this.setState({ email: emailWithIndex });
+        
+        // console.log(email);
         
         // ******
-        console.log(email.subject);
+        // console.log(email.subject);
         // ******
         
         this.setState({ showDetails: true });
@@ -90,29 +119,20 @@ class App extends Component {
         this.setState({ time: email.time });
         this.setState({ message: email.message });
     }
+    deleteEmail = (email) => {
+        this.setState({ deleted: this.state.deleted + 1 });
+        console.log(email.index, email.tag); // setState() is async.
+        this.setState({ deleteds: [
+                    ...this.state.deleteds, 
+                    {...email, tag: "deleted", read: "true"}
+                ] });
+        this.setState({ inboxs: [...this.state.inboxs.slice(0, email.index), ...this.state.inboxs.slice(email.index + 1)] });
+
+        setTimeout(() => this.handleInboxClick(), 1000);
+    }
     render() {
         return (
-            <div>
-                {this.state.showMsg && "Nothing here."}
-                {!this.state.showMsg && 
-                    <div>
-                        {this.state.displays.map((email, index) => {
-                            return <Subject key={index} {...email} 
-                                clickedASubject={() => 
-                                    this.clickedASubject(email)
-                                } />;
-                        })}
-                    </div>
-                }
-                {(!this.state.showMsg && this.state.showDetails) && 
-                    <div>
-                        <h3>{this.state.subject}</h3>
-                        <p>{this.state.from}</p>
-                        <p>{this.state.time}</p>
-                        <hr />
-                        <p>{this.state.message}</p>
-                    </div>
-                }
+            <div style={{display: "flex"}}>
                 <div>
                     <ul>
                         <li onClick={ () => this.handleInboxClick()}>Inbox: {this.state.inbox}</li>
@@ -121,6 +141,33 @@ class App extends Component {
                         <li onClick={ () => this.handleTrashClick()}>Trash: {this.state.deleted}</li>
                     </ul>
                 </div>
+                <div>
+                    <br />
+                    {this.state.showMsg && "Nothing here."}
+                </div>
+                {!this.state.showMsg && 
+                    <div>
+                        {this.state.displays.map((email, index) => {
+                            return <Subject key={index} {...email} 
+                                    clickedASubject={() => 
+                                        this.clickedASubject(email, index)} 
+                                    read={email.read}
+                                />;
+                        })}
+                    </div>
+                }
+                {(!this.state.showMsg && this.state.showDetails) && 
+                    <div>
+                        <h3>{this.state.subject}</h3>
+                        <p>{this.state.from}</p>
+                        <p>{this.state.time}</p>
+                        {this.state.withButton &&
+                            <button onClick={() => this.deleteEmail(this.state.email)}><i className="fas fa-trash-alt"></i></button>
+                        }
+                        <hr />
+                        <p>{this.state.message}</p>
+                    </div>
+                }
             </div>
         );
     }
