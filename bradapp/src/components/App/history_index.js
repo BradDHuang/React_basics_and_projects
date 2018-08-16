@@ -392,7 +392,7 @@ class App extends Component {
     // this.setState({ loggedIn: false });
     // this.setState({ username: "" });
     // this.setState({ password: "" });
-    this.setState({authenticated: true, loggedIn: false, username: "", password: ""});
+    this.setState({authenticated: false, loggedIn: false, username: "", password: ""});
     
   }
   
