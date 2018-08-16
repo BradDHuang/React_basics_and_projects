@@ -204,6 +204,10 @@ class App extends Component {
   }
   resetNum = () => {
     this.setState({ curNum: 0 });
+    // The timer should be reset as well,
+    // that is, if at 1.8 sec the number showing is 1, press reset button,
+    // then the number should jump to 0 from 1.
+    // Also, the number should jump to 1 from 0 at 2.8 sec (instead of 2.0sec).
   }
   render() {
     const {started} = this.state;
@@ -266,6 +270,8 @@ class App extends Component {
                         Location: response.data.location,
                         Following: response.data.following,
                         Followers: response.data.followers
+                        // lowercase are preferred for var.
+                        // e.g. use name, location, following, followers.
         });
       })
       .catch(err => {
@@ -371,9 +377,10 @@ class App extends Component {
     if ( (user === "today" && pw === match1)  
           || (user === "tomorrow" && pw === match2)
           || (user === "yesterday" && pw === match3) ) {
-      this.setState({authenticated: true});   
-      this.setState({loggedIn: true});
-      this.setState({showMsg: false});
+      // this.setState({authenticated: true});   
+      // this.setState({loggedIn: true});
+      // this.setState({showMsg: false});
+      this.setState({authenticated: true, loggedIn: true, showMsg: false});
       
     } else {
       
@@ -381,10 +388,11 @@ class App extends Component {
     }
   }
   resetAuth = () => {
-    this.setState({ authenticated: false });
-    this.setState({ loggedIn: false });
-    this.setState({ username: "" });
-    this.setState({ password: "" });
+    // this.setState({ authenticated: false });
+    // this.setState({ loggedIn: false });
+    // this.setState({ username: "" });
+    // this.setState({ password: "" });
+    this.setState({authenticated: true, loggedIn: false, username: "", password: ""});
     
   }
   
