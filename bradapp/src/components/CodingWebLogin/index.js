@@ -44,6 +44,8 @@ class Login extends Component {
                 
                 this.props.loginHandler();
                 
+                this.props.validateUser();
+                
                 this.props.history.push("/");
             } )
             .catch( err => {

@@ -5,7 +5,7 @@ import {BrowserRouter, Route, Switch, withRouter, Link} from "react-router-dom";
 import "./style.css";
 import Login from "../CodingWebLogin";
 
-// var LocalStorageMixin = require('react-localstorage');
+var localStorage = require('localStorage');
 
 class Details extends Component {
     constructor(props) {
@@ -176,10 +176,18 @@ const WithRouterLogin = withRouter(Login);
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = { clickedAProblem: false, authenticated: false, errorMsg: false };
+        const cachedLogin = localStorage.getItem("authenticated");
+        if (cachedLogin) {
+            this.state = { clickedAProblem: false, authenticated: JSON.parse(cachedLogin), errorMsg: false };
+        } else {
+            this.state = { clickedAProblem: false, authenticated: false, errorMsg: false };
+        }
     }
     
-    // mixins = [LocalStorageMixin];
+    validateUser = () => {
+        localStorage.setItem("authenticated", "true");
+        this.setState({authenticated: false});
+    }
     
     clickedAProblem = () => {
         this.setState({ clickedAProblem: true });
@@ -207,6 +215,7 @@ class App extends Component {
                             render={ () => (<WithRouterLogin 
                                 loginHandler={this.loginHandler}
                                 authenticated={this.state.authenticated}
+                                validateUser={this.validateUser}
                             />) }
                         />
                         <Route path="/:problemId"
