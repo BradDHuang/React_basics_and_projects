@@ -1,0 +1,70 @@
+
+Redux：
+    a predictable state container for JS apps.
+    helps you write applications that 
+        1. behave consistently, 
+        2. run in different environments (client, server, and native), 
+        3. easy to test.
+        
+When to use Redux
+    1. Same piece of application state 
+       needs to be mapped to multiple container components (share state).
+    2. Too many props 
+       are being passed through multiple parent-and-child components.
+    3. To separate state out of components for a better code structure.
+    
+
+3 Principles:
+
+    1. Single source of truth
+    
+       The state of your whole application is stored in an object tree within 
+       a single store.
+       // the entire state of the application will be represented by one JS object.
+
+    2. State is read-only 
+    
+       The only way to change the state is to 
+       emit/dispatch an action, a plain JS object describing the change.
+
+    3. Changes are made with pure functions 
+    
+       To specify how the state tree is transformed by actions, you write 
+       pure reducers.
+       // Reducer is the function knowing how to return a new state 
+       // based on the action it receives.
+       
+       // to describe the logic of how to change the state you have 
+       // to write a function that takes the previous state of the app and the action being dispatched, 
+       // then returns the next state of the app. 
+       
+       // Pure functions are those whose return values 
+       // depend only upon the values of their arguments.
+        e.g.
+        function square(x) {
+          return x * x;
+        }
+        function squareAll(items) {
+          return items.map(square);
+          // a new array is returned 
+          // instead of modifying the items that was passed in.
+        }
+        // map calls a provided callback function once for each element in an array, 
+        // in order, and constructs a new array from the results.
+        // review: A callback function is a function passed into another function as an argument, 
+        //         which is then invoked inside the outer function to complete some kind of routine or action.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
