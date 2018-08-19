@@ -1,0 +1,26 @@
+
+https://redux.js.org/faq/immutabledata#benefits-of-immutability
+
+
+https://tips.tutorialhorizon.com/2017/01/06/push-vs-concat-vs-spread/
+
+    push – mutates the original data
+    
+    concat – returns new array and does not mutate the original data
+    
+    spread – nicer way to use concat, does not mutate the original data
+
+
+https://medium.com/@fknussel/arrays-objects-and-mutations-6b23348b54aa
+    
+    The slice() method 
+    returns a shallow copy of a portion of an array 
+    into a new array object selected from begin to end (end not included). 
+    The original array will not be modified.
+    
+    splice(), changes the source array
+
+
+
+
+
