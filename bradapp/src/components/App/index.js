@@ -186,8 +186,14 @@ class App extends Component {
     
     validateUser = () => {
         localStorage.setItem("authenticated", "true");
+        this.setState({authenticated: true});
+    }
+    logOut = () => {
+        localStorage.setItem("authenticated", "false");
         this.setState({authenticated: false});
     }
+    // the logOut() only reset the localStorage,
+    // no redirecting yet.
     
     clickedAProblem = () => {
         this.setState({ clickedAProblem: true });
@@ -228,6 +234,9 @@ class App extends Component {
                             />) }
                         />
                     </Switch>
+                    { this.state.authenticated && 
+                        <button onClick={this.logOut}>Logout</button>
+                    }
                 </div>
             </BrowserRouter>
         );
