@@ -25,7 +25,10 @@ When to use Redux
     2. State is read-only 
     
        The only way to change the state is to 
-       emit/dispatch an action, a plain JS object describing the change.
+       emit/dispatch an action.
+       // an action: a plain JS object describing the change.
+       // In order to define the change, the action object usually has a key .type, 
+       // which is just a JS string to indicate the change.
 
     3. Changes are made with pure functions 
     
@@ -55,7 +58,25 @@ When to use Redux
         //         which is then invoked inside the outer function to complete some kind of routine or action.
 
 
+Store:
 
+    binds together the 3 principles of Redux:
+
+        1. Holds the current application state object
+        2. Allows you to dispatch actions
+        3. When you create it, you need to specify the reducer that tells how state is updated with actions.
+    
+    has 3 important methods:
+        
+        1. getState()
+           retrieves the current state of the Redux store.
+        2. dispatch()
+           how we dispatch actions to change the state of the application.
+        3. subscribe()
+           registers a callback that the redux store will call 
+           any time an action has been dispatched 
+           so you can update the UI of your application 
+           to reflect the current application state.
 
 
 
