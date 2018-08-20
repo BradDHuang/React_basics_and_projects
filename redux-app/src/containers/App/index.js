@@ -3,20 +3,31 @@ import React, { Component } from 'react';
 
 import {connect} from "react-redux";
 
+import AddTodo from '../../components/AddTodo';
+import * as actions from '../../actions';
+import TodoList from '../../components/TodoList';
+import Filter from '../../components/Filter';
+
 class App extends Component {
-  
+  /*
   componentDidMount() {
     setTimeout(() => {
       this.props.setFilter('active');
     }, 5000);
   }
-  
+  */
   render() {
     console.log(this.props.todos);
     console.log(this.props.filter);
     return (
       <div>
-        App
+          <AddTodo addTodo={this.props.addTodo} />
+          <TodoList 
+            list={this.props.todos} 
+            onTodoClick={this.props.toggleTodo} 
+            filter={this.props.filter}
+          />
+          <Filter filter={this.props.filter} setFilter={this.props.setFilter} />
       </div>
     );
   }
@@ -33,8 +44,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    addTodo: (text) => {
+        dispatch(actions.addTodo(text));
+    },
+    toggleTodo: (id) => {
+        dispatch(actions.toggleTodo(id));
+    },
     setFilter: (filter) => {
-      dispatch({type: 'SET_FILTER', filter: filter});
+      // dispatch({type: 'SET_FILTER', filter: filter});
+      dispatch(actions.setFilter(filter));
     },
   };
 };
