@@ -21,6 +21,24 @@ https://medium.com/@fknussel/arrays-objects-and-mutations-6b23348b54aa
     splice(), changes the source array
 
 
+https://github.com/npm/npm/wiki/Troubleshooting
+    If your npm is broken
+    Reinstall npm:
+    curl -L https://www.npmjs.org/install.sh | sh
+https://askubuntu.com/questions/250971/no-such-file-or-directory-error-while-using-npm
+    hash -r
+    
+    
+https://stackoverflow.com/questions/30631725/update-node-js-version-inside-cloud-9-ide
+    nvm install 8.11.4
+    
+
+
+
+
+
+
+
 
 
 
