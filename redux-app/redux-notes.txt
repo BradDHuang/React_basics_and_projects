@@ -5,6 +5,8 @@ Redux：
         1. behave consistently, 
         2. run in different environments (client, server, and native), 
         3. easy to test.
+// Redux is not only made for React, 
+// but it is a good pair to use with React.
         
 When to use Redux
     1. Same piece of application state 
@@ -43,6 +45,7 @@ When to use Redux
        
        // Pure functions are those whose return values 
        // depend only upon the values of their arguments.
+       // Pure functions also do not override the values of anything.
         e.g.
         function square(x) {
           return x * x;
@@ -58,6 +61,7 @@ When to use Redux
         //         which is then invoked inside the outer function to complete some kind of routine or action.
 
 
+// only a single store in a Redux application. 
 Store:
 
     binds together the 3 principles of Redux:
@@ -79,10 +83,48 @@ Store:
            to reflect the current application state.
 
 
+Redux provides a utility function called 
+
+combineReducers()
+
+which helps each of reducers manage its own part of the global state. 
+The state parameter is different for every reducer, 
+and corresponds to the part of the state it manages.
+// handles different part of a single store instead of many stores.
 
 
+react-redux: 
+    an official binding library to use Redux with React.
+    
+use a special Component 
+<Provider> 
+from react-redux, to magically make the store available 
+to all React Components in the application without passing it every time. 
+Only need to use it once when render the root Component.
 
 
+connect our App Component with Redux using 
+
+connect() 
+
+from react-redux:
+
+
+To use connect(), you need to define a special function called 
+
+mapStateToProps() 
+
+that tells how to transform the current Redux store state into the props 
+you want to pass to a presentational component you are wrapping.
+
+
+In addition to reading the state, components can dispatch actions. 
+In a similar fashion, you can define a function called 
+
+mapDispatchToProps() 
+
+that receives the dispatch() method and returns callback props 
+that you want to inject into the presentational component.
 
 
 
