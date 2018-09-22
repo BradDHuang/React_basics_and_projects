@@ -4,6 +4,12 @@ Install create-react-app as a global package via npm
 
     npm install create-react-app -g
     
+    // If you want to use a package 
+    // as a command line tool, 
+    // then install it globally. 
+    // This way, it works no matter which directory is current. 
+    // This is the choice you would use if you were installing grunt, for example.
+    
 Use create-react-app to create a project
 
     create-react-app myapp
