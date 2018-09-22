@@ -1,6 +1,27 @@
 
 https://redux.js.org/faq/immutabledata#benefits-of-immutability
 
+What are the benefits of immutability?
+    Immutability can bring 
+    increased performance to your app, 
+    and leads to simpler programming and debugging, 
+    as data that never changes is easier to reason about 
+    than data that is free to be changed arbitrarily throughout your app.
+    
+    immutability in the context of a Web app 
+    enables sophisticated change detection techniques 
+    to be implemented simply and cheaply, 
+    ensuring the computationally expensive process of updating the DOM 
+    occurs only when it absolutely has to.
+
+Why is immutability required by Redux?
+    (1) Both Redux and React-Redux employ shallow equality checking. 
+    // shallow checking requires immutability to function correctly.
+    (2) Immutable data management ultimately makes data handling safer.
+    (3) Time-travel debugging requires that 
+        reducers be pure functions with no side effects, 
+        so that you can correctly jump between different states.
+
 
 https://tips.tutorialhorizon.com/2017/01/06/push-vs-concat-vs-spread/
 
