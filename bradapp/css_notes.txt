@@ -61,6 +61,14 @@ Specificity is based on the matching rules which are composed of different sorts
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity
 
+e.g.
+    Type selectors (e.g., h1) and pseudo-elements (e.g., ::before).
+    Class selectors (e.g., .example), attributes selectors (e.g., [type="radio"]) and pseudo-classes (e.g., :hover).
+    ID selectors (e.g., #example).
+    // Inline styles added to an element (e.g., style="font-weight:bold") 
+    // always overwrite any styles in external stylesheets, 
+    // and thus can be thought of as having the highest specificity.
+
 
 
 
