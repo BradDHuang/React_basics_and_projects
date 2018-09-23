@@ -34,34 +34,58 @@ When to use Redux
 
 3 Principles:
 
-    1. Single source of truth
+    1. Single 
+       source of truth
     
-       The state of your whole application is stored in an object tree within 
+       The state of your 
+       whole application 
+       is stored in 
+       an object tree within 
        a single store.
-       // the entire state of the application will be represented by one JS object.
+       // the entire state of the application will be represented by 
+       // one JS object.
 
-    2. State is read-only 
+    2. State 
+       is read-only 
     
-       The only way to change the state is to 
-       emit/dispatch an action.
-       // an action: a plain JS object describing the change.
-       // In order to define the change, the action object usually has a key .type, 
-       // which is just a JS string to indicate the change.
+       The only way 
+       to change the state is to 
+       emit / dispatch an action.
+       // an action: 
+          a plain JS object 
+          describing the change.
+       // In order to define the change, the action object usually 
+          has a key .type, 
+       // which is just 
+          a JS string 
+          to indicate the change.
 
-    3. Changes are made with pure functions 
+    3. Changes are made with 
+       pure functions 
     
        To specify how the state tree is transformed by actions, you write 
        pure reducers.
-       // Reducer is the function knowing how to return a new state 
+       
+       // Reducer is 
+          the function 
+          knowing how to return 
+          a new state 
        // based on the action it receives.
        
-       // to describe the logic of how to change the state you have 
-       // to write a function that takes the previous state of the app and the action being dispatched, 
+       // to describe the logic of how to change the state 
+       // you have to write a function 
+       // that takes the previous state of the app 
+       // and the action being dispatched, 
        // then returns the next state of the app. 
        
-       // Pure functions are those whose return values 
-       // depend only upon the values of their arguments.
-       // Pure functions also do not override the values of anything.
+       // Pure functions are those 
+       // whose return values 
+       // depend only upon 
+       // the values of their arguments.
+       
+       // Pure functions also 
+       // do not override the values of anything.
+       
         e.g.
         function square(x) {
           return x * x;
