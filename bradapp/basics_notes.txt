@@ -23,7 +23,9 @@ multiple spaces that are visible on a web page and not only in the source code.
         <Text // (at App.js:89)
             objectProps={objectProps}
         />);
+        
 Objects are not valid as a React child (found: object with keys {a, b, c}). 
+// React can't render objects. 
 If you meant to render a collection of children, use an array instead.
 
 
