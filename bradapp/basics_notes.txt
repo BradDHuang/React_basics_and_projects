@@ -29,9 +29,14 @@ Objects are not valid as a React child (found: object with keys {a, b, c}).
 If you meant to render a collection of children, use an array instead.
 
 
-React itself does not have any way to fetch data 
+React itself 
+does not have any way 
+to fetch data 
 since it is just a view library to build web UI. 
-In that case you need to use external libraries to do that.
+
+In that case you need to use 
+external libraries 
+to do that.
 e.g.
     axios
     axios is a promise based HTTP client for the browser and node.js, 
