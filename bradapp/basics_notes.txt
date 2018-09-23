@@ -181,7 +181,9 @@ withRouter:
     in any React component inside <BrowserRouter> 
     via the withRouter HOC from React router.
     
-Note: withRouter will have history for its props (props.history). 
+Note: 
+      withRouter will have history for its props 
+      // (props.history). 
 
 import { withRouter } from 'react-router-dom';
 
