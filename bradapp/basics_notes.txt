@@ -140,7 +140,9 @@ import { Link } from 'react-router-dom';
 e.g.
     <Link to="/">Home</Link>
     
-Note: <Link> is Client-side Only, No browser Refresh.
+Note: 
+    <Link> is Client-side Only, 
+    No browser Refresh.
 
 
 exact={true}
