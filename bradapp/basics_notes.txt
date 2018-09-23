@@ -100,14 +100,19 @@ ref:
 
 import React, {PureComponent} from 'react';
 
-PureComponent is exactly the same as Component except that 
+PureComponent is exactly the same as Component 
+    except that 
     when props or state changes, PureComponent will do a 
-    Shallow comparision on both props and state.
+    Shallow comparision 
+    on both props and state.
     
     
 HOC:
-    A higher-order component (HOC) is a function 
-    that takes a component and returns a new component, for the concept of 
+    A higher-order component (HOC) 
+    is a function 
+    that takes a component 
+    and returns a new component, 
+    for the concept of 
     reusable component.
     
     
