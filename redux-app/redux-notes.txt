@@ -192,18 +192,30 @@ the presentational component.
     presentational component.
 
 
-3 main Reasons for using Action Creator:
+3 main Reasons for 
+using Action Creator:
 // Action creator is functions that create actions.
+
     1. Basic abstraction: 
-    Rather than writing action type strings in every component that needs to create the same type of action, 
-    put the logic for creating that action in one place.
+    
+    Rather than writing action type strings 
+    in every component 
+    that needs to create the same type of action, 
+    put the logic for creating that action 
+    in one place.
 
     2. Documentation: 
-    The params of the function act as a guide for what data is needed to go into the action.
+    
+    The params of the function 
+    act as a guide 
+    for what data is needed to go into the action.
 
     3. Code separation: 
+    
     Consistently using action creators means that a component 
-    doesn't have to know any of the details of creating and dispatching the action.
+    doesn't have to know any of 
+    the details 
+    of creating and dispatching the action.
 
 
 
