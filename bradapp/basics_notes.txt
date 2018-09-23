@@ -298,12 +298,14 @@ e.g.
     
     
     Review:
-    These methods are called in the following order 
-    when an instance of a component is being created and inserted into the DOM:
+    These methods are called 
+    in the following order 
+    when an instance of a component 
+    is being created and inserted into the DOM:
 
-        constructor()
-        render()
-        componentDidMount()
+        (1) constructor()
+        (2) render()
+        (3) componentDidMount()
         
         // Updating
         shouldComponentUpdate()
