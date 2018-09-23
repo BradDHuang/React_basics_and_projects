@@ -159,32 +159,36 @@ the root Component.
 
 connect our App Component with Redux using 
 
-connect() 
+    connect() 
 
 from react-redux:
 
 
 To use connect(), you need to define a special function called 
 
-mapStateToProps() 
+    mapStateToProps() 
 
 that tells how to transform the current Redux store state into the props 
-you want to pass to a presentational component you are wrapping.
+you want to pass to 
+a presentational component 
+you are wrapping.
 
 
-In addition to reading the state, components can dispatch actions. 
+In addition to reading the state, 
+components can dispatch actions. 
 In a similar fashion, you can define a function called 
 
-mapDispatchToProps() 
+    mapDispatchToProps() 
 
 that receives the dispatch() method and returns callback props 
-that you want to inject into the presentational component.
+that you want to inject into 
+the presentational component.
 
 
-the stateful component: 
+// the stateful component: 
     container component.
     
-the stateless component: 
+// the stateless component: 
     presentational component.
 
 
