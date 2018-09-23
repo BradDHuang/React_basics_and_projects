@@ -141,13 +141,20 @@ and corresponds to the part of the state it manages.
 
 
 react-redux: 
-    an official binding library to use Redux with React.
+    an official 
+    binding library 
+    to use Redux with React.
     
 use a special Component 
-<Provider> 
-from react-redux, to magically make the store available 
-to all React Components in the application without passing it every time. 
-Only need to use it once when render the root Component.
+    <Provider> 
+from react-redux, to magically make the store available to 
+all React Components 
+in the application
+without passing it every time. 
+
+Only need to use it once 
+when render 
+the root Component.
 
 
 connect our App Component with Redux using 
