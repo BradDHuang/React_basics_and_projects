@@ -1,19 +1,35 @@
 
 Redux：
-    a predictable state container for JS apps.
+    a predictable 
+    state container 
+    for JS apps.
+    
     helps you write applications that 
+    
         1. behave consistently, 
+        
         2. run in different environments (client, server, and native), 
+        
         3. easy to test.
+        
 // Redux is not only made for React, 
 // but it is a good pair to use with React.
+
         
 When to use Redux
+
     1. Same piece of application state 
-       needs to be mapped to multiple container components (share state).
+       needs to be mapped to 
+       multiple 
+       container components (share state).
+       
     2. Too many props 
-       are being passed through multiple parent-and-child components.
-    3. To separate state out of components for a better code structure.
+       are being passed through 
+       multiple 
+       parent-and-child components.
+       
+    3. To separate state out of components 
+       for a better code structure.
     
 
 3 Principles:
