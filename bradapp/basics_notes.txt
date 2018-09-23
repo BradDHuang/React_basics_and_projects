@@ -250,12 +250,13 @@ e.g.
     
     
     location.search:
-    Query Parameters
+    // Return the querystring part of a URL, including the question mark (?). 
+        Query Parameters
     e.g.
-    http://www.example.com:3000/users/foo?key1=40&key2=bar
+        http://www.example.com:3000/users/foo?key1=40&key2=bar
     // {key1: '40', key2: 'bar'}
-    ? // indicates the start point of query parameters
-    & // separates different query parameters
+        ? // indicates the start point of query parameters
+        & // separates different query parameters
     
     
     We can also 
@@ -332,11 +333,13 @@ e.g.
     
     
     NOTE: 
+    
     For all apis we have, if you add a query parameter
     
-    noError=1 // ?noError=1
+        noError=1 // ?noError=1
     
-    in the URL, you will never get server error again.
+    in the URL, 
+    you will never get server error again.
     
     
     
