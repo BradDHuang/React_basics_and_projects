@@ -160,7 +160,8 @@ import { Switch } from 'react-router-dom';
         <Route path="/:pageName" component={AnotherPage} />
     </Switch>
  
-Note: <Switch> will Only render the 1st matched route.
+Note: <Switch> will 
+      Only render the 1st matched route.
       that is, routes' orders matter.
       
       
