@@ -12,7 +12,9 @@ Alternatively referred to as a fixed space or hard space,
 Non-Breaking SPace (NBSP) is used in programming, 
 and word processing to create a space in a line that cannot be broken by word wrap. 
 With HTML &nbsp; 
-allows you to create multiple spaces that are visible on a web page and not only in the source code.
+allows you to create 
+multiple spaces that are visible on a web page and not only in the source code.
+// https://www.w3schools.com/html/html_entities.asp
 
 
 // return <p>{this.props.objectProps}</p>; // (at Text.js:13)
