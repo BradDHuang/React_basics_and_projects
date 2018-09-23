@@ -130,12 +130,14 @@ When to use Redux
 
 Redux provides a utility function called 
 
-combineReducers()
+    combineReducers()
 
 which helps each of reducers manage its own part of the global state. 
 The state parameter is different for every reducer, 
 and corresponds to the part of the state it manages.
-// handles different part of a single store instead of many stores.
+    // handles different part 
+       of a single store 
+       instead of many stores.
 
 
 react-redux: 
