@@ -81,11 +81,13 @@ If you need to load data
     
     
 a test on 08/06/2018
-var t = new Date();
-t.setDate(0);
-t.getDate(); // 31, it is of July.
-t.setDate(32);
-t.getDate(); // 1, it is of Aug.
+    var t = new Date();
+    t.setDate(0);
+    t.getDate(); 
+    // 31, it is of July.
+    t.setDate(32);
+    t.getDate(); 
+    // 1, it is of Aug.
 
 Or, use moment.js
 https://momentjs.com/
