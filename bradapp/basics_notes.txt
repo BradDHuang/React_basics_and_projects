@@ -258,7 +258,9 @@ e.g.
     & // separates different query parameters
     
     
-    We can also use <Route>'s render props to render component.
+    We can also 
+    use <Route>'s render props 
+    to render component.
     e.g.1
     <Route
         path="/:pageName"
