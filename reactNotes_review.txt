@@ -152,6 +152,27 @@ you can assign the special propTypes property.
 // npm install prop-types --save
 
 
+The state of a React component 
+is a place to store data inside the component. 
+It is similar to a Javascript Object, 
+but it is immutable.
+
+// A component's state should be considered as private data. 
+
+// Only Class Component has state, functional Component does not.
+
+You can read the state anywhere inside the component by this.state
+Since the state is immutable, we can not set the value like what we used to do for Javascript Object. 
+Instead, there is a special function called 
+setState() 
+to set the state.
+
+3 important principles of setting state:
+    (1) Do not modift state directly, use setState() instead. 
+        // The only place you can assign value to this.state is in the constructor.
+    (2) setState() may be Async.
+    (3) State updates are merged.
+
 
 
 

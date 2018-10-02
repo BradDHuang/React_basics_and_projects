@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class Text extends Component {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     // {text: "text goes here."}
     
     return (

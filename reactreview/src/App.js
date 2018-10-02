@@ -9,7 +9,16 @@ function add(a, b) {
 }
 
 class App extends Component {
+  // use the construtor to init state
+  constructor(props) {
+    super(props);
+    this.state = { number: 1 };
+  }
+  addOne = () => {
+    this.setState({ number: this.state.number + 1 });
+  }
   render() {
+    console.log(this.state);
     const name = "Brad";
     const textStyle = {
       color: "#00f",
@@ -24,7 +33,7 @@ class App extends Component {
         <h1 className="green">React App Running!</h1>
         <h2>Content goes below:</h2>
         <br />
-        <p style={textStyle}>contents are here. 1 + 9 = { add(1, 9) }.</p>
+        <p style={textStyle}>contents are here. x + 9 = ({this.state.number}) + 9 = { add(this.state.number, 9) }.</p>
         <p>{name}{ name.length > 5 ? ", name length > 5." : ", name length <= 5." }</p>
         <Text 
           text="text goes here." 
@@ -33,6 +42,7 @@ class App extends Component {
           objectProps={objectProps}
           arrayProps={arrayProps}
         />
+        <button onClick={this.addOne}>x++</button>
       </div>
     );
   }
