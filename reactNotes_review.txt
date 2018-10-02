@@ -33,9 +33,44 @@ for React components when they are defined using ES6 classes:
       }
     }
 
+// A React component is simply a JavaScript class that requires the render function to be declared. 
+// The render function simply outputs HTML code, which is implemented using either JSX. 
+// A React component may also require additional functions for handling data, actions and lifecycle events.
+
+// React uses JSX syntax for templating the view 
+// instead of regular Javascript. 
+// It is a syntax extension to JavaScript. 
+
+// JSX produces React “elements”. 
+
 using JSX 
 to describe what your UI should look like. 
 // Each JSX element is just syntactic sugar for calling React.createElement(). 
+
+// The only place to use JSX is 
+// in the return of the render function inside a react component.
+
+// If we want to return more elements, we need to wrap it 
+// with one container element. 
+
+// The HTML Tag have to be closed, JSX requires that every tag should be closed.
+
+// Since JSX is closer to JavaScript than to HTML, 
+// React DOM uses camelCase property naming convention 
+// instead of HTML attribute names.
+// For example, class becomes className in JSX, and tabindex becomes tabIndex.
+
+// https://reactjs.org/docs/dom-elements.html
+
+// You can embed any JavaScript expression in JSX 
+// by wrapping it in curly braces.
+// You can not use Javascript expresssions that require curly braces in syntax, 
+// like if, for, while, switch.
+// But we can use conditional expressions.
+
+// Inline Style
+The style attribute accepts a JavaScript object with camelCased properties rather than a CSS string.
+
 
 React provides several APIs for manipulating elements:
     cloneElement()
@@ -70,7 +105,14 @@ React & its features:
     With React, we write HTML using JS. 
     
     React is fast.
-
+    
+    
+// https://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version
+// e.g.
+    nvm install v8.12.0
+    node -v 
+    // v8.12.0
+    
 
 
 
