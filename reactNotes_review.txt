@@ -141,6 +141,17 @@ Props is shorthand for properties,
 and Props are 
     how components talk to each other 
     by passing values around.
+    
+For some applications, you can use JavaScript extensions 
+like Flow or TypeScript 
+to typecheck your whole application.
+
+React has some built-in typechecking abilities. 
+To run typechecking on the props for a component, 
+you can assign the special propTypes property.
+// npm install prop-types --save
+
+
 
 
 

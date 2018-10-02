@@ -2,6 +2,7 @@
 import React, {Component} from "react";
 import "./App.css";
 import Text from "./Text.js";
+// import PropTypes from 'prop-types';
 
 function add(a, b) {
   return a + b;

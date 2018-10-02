@@ -1,5 +1,6 @@
 
 import React, {Component} from "react";
+import PropTypes from 'prop-types';
 
 class Text extends Component {
   render() {
@@ -13,5 +14,9 @@ class Text extends Component {
     );
   }
 }
+
+Text.propTypes = {
+  text: PropTypes.string
+};
 
 export default Text;
