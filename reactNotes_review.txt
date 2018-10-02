@@ -136,6 +136,11 @@ React & its features:
     // v8.12.0
     
 
+Component Props
+Props is shorthand for properties, 
+and Props are 
+    how components talk to each other 
+    by passing values around.
 
 
 
