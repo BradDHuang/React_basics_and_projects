@@ -27,15 +27,37 @@ React.Component
 is the base class 
 for React components when they are defined using ES6 classes:
 // e.g.
+// use an ES6 class to define a component:
     class Greeting extends React.Component {
       render() {
         return <h1>Hello, {this.props.name}</h1>;
       }
     }
+// or, use a simpler way to define a component:
+    function HelloWorld(props) {
+      return <h1>Hello World</h1>;
+    }
+    
+// render the component in order to see the result.
+// e.g.
+    ReactDOM.render(<App />, document.getElementById('root'));
+    // call ReactDOM.render() with the <App /> component, 
+    // to render <App /> inside <div id="root"></div>.
 
 // A React component is simply a JavaScript class that requires the render function to be declared. 
 // The render function simply outputs HTML code, which is implemented using either JSX. 
 // A React component may also require additional functions for handling data, actions and lifecycle events.
+
+React components are like JavaScript functions. 
+They accept arbitrary inputs (called “props”) 
+and return React elements describing what should appear on the screen.
+
+A stateless component’s work is simply to display data that it receives from its parent React component. 
+// It can also receive events and inputs, which it passes up to its parent to handle. 
+
+A React container or stateful component does the work of rendering one or more child components. 
+// It fetches data from external sources and feeds it to its child components. 
+// It also receives inputs and events from them in order to initiate actions.
 
 // React uses JSX syntax for templating the view 
 // instead of regular Javascript. 
