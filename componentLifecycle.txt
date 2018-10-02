@@ -1,0 +1,64 @@
+
+
+// https://reactjs.org/docs/react-component.html
+// http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+Each React component has several “lifecycle methods” 
+that you can override to run code 
+at particular times in the process. 
+
+// Methods prefixed with Will are called right before something happens, 
+// and methods prefixed with Did are called right after something happens.
+
+Through lifecycle methods, we can then control what happens 
+when each tiny section of UI renders, updates, 
+thinks about re-rendering, and then disappears entirely.
+
+Only class components have lifecycle methods.
+
+// e.g.
+// commonly used lifecycle methods:
+
+    constructor()
+    // The constructor for a React component is called before it is mounted. 
+    // When implementing the constructor for a React.Component subclass, 
+    // call super(props) before any other statement. 
+    // Otherwise, this.props will be undefined in the constructor, which can lead to bugs.
+    // If you don’t initialize state and you don’t bind methods, 
+    you don’t need to implement a constructor for your React component.
+    // Typically, in React constructors are only used for 2 purposes:
+        (1) Initializing local state by assigning an object to this.state.
+        (2) Binding event handler methods to an instance.
+    
+    render()
+    // The render() function should be pure, 
+    meaning that it does not modify component state, 
+    it returns the same result each time it’s invoked, 
+    and it does not directly interact with the browser.
+    
+    componentDidMount()
+    // componentDidMount() is invoked immediately after a component is mounted.
+    // If you need to load data from a remote endpoint, 
+    this is a good place to instantiate the network request.
+    
+    // An update can be caused by changes to props or state. 
+    render()
+    
+    componentDidUpdate(prevProps, prevState)
+    // componentDidUpdate() is invoked immediately after updating occurs.
+    
+The only method you must define 
+in a React.Component subclass is called 
+render(). 
+// All the other methods are optional.
+
+
+
+
+
+
+
+
+
+
+

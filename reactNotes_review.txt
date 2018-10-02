@@ -168,7 +168,7 @@ setState()
 to set the state.
 
 3 important principles of setting state:
-    (1) Do not modift state directly, use setState() instead. 
+    (1) Do not modify state directly, use setState() instead. 
         // The only place you can assign value to this.state is in the constructor.
     (2) setState() may be Async.
     (3) State updates are merged.
