@@ -55,6 +55,22 @@ Invokes a function on every immediate child contained within children with this 
 // If children is an array it will be traversed and the function will be called for each child in the array. 
     
 
+React & its features:
+    React is a JS library for building UIs.
+    
+    React is designed around the concept of 
+    reusable components. 
+    
+    In React, we describe UIs using components. 
+    
+    React's name is the simple explanation of how Reacdt works. 
+    When the input of a component changes, 
+    the UI it represents (the output) changes automatically. 
+    
+    With React, we write HTML using JS. 
+    
+    React is fast.
+
 
 
 
