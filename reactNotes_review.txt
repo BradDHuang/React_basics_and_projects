@@ -179,6 +179,21 @@ Handling events with React elements is very similar to handling events on DOM el
 There are some syntactic differences:
     React events are named using camelCase, rather than lowercase.
     With JSX you pass a function as the event handler, rather than a string.
+    
+    
+axios 
+is a Promise based 
+HTTP client for the browser and node.js
+
+How to use axios
+    // options is a JS object
+    axios(options)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
 
 
