@@ -172,6 +172,13 @@ to set the state.
         // The only place you can assign value to this.state is in the constructor.
     (2) setState() may be Async.
     (3) State updates are merged.
+    
+
+Handling Events
+Handling events with React elements is very similar to handling events on DOM elements. 
+There are some syntactic differences:
+    React events are named using camelCase, rather than lowercase.
+    With JSX you pass a function as the event handler, rather than a string.
 
 
 

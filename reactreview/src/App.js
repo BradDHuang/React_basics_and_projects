@@ -8,17 +8,32 @@ function add(a, b) {
   return a + b;
 }
 
+const data = [
+  { id: "aaa", name: "An" },
+  { id: "bbb", name: "Ben" }
+];
+
+// Reusable component:
+function List(props) {
+  return (
+    <li>id: {props.id} | name: {props.name}</li>
+  );
+}
+
 class App extends Component {
   // use the construtor to init state
   constructor(props) {
     super(props);
-    this.state = { number: 1 };
+    this.state = { number: 1, data };
   }
   addOne = () => {
     this.setState({ number: this.state.number + 1 });
   }
+  logInput = (e) => {
+    console.log(e.target.value);
+  }
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     const name = "Brad";
     const textStyle = {
       color: "#00f",
@@ -43,6 +58,13 @@ class App extends Component {
           arrayProps={arrayProps}
         />
         <button onClick={this.addOne}>x++</button>
+        <input onChange={this.logInput} />
+        <br />
+        <ul>
+          {this.state.data.map((record, index) => {
+            return <List key={index} id={record.id} name={record.name} />;
+          })}
+        </ul>
       </div>
     );
   }
