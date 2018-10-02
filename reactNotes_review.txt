@@ -1,0 +1,80 @@
+
+// this file contains notes about React for review purpose.
+
+// https://reactjs.org/docs/react-api.html#reactchildren
+
+React is the entry point to the React library. 
+If you load React from a <script> tag, these top-level APIs are available on the React global. 
+
+If you use ES6 with npm, you can write 
+import React from 'react'. 
+// If you use ES5 with npm, you can write var React = require('react').
+
+React components 
+let you split the UI into independent, 
+reusable pieces, 
+and think about each piece in isolation. 
+// React components can be defined by subclassing React.Component or React.PureComponent.
+
+// React.PureComponent is similar to React.Component. 
+// The difference between them is that React.Component doesn’t implement shouldComponentUpdate(), 
+// but React.PureComponent implements it with a shallow prop and state comparison.
+
+// If your React component’s render() function renders the same result given the same props and state, 
+// you can use React.PureComponent for a performance boost in some cases.
+
+React.Component 
+is the base class 
+for React components when they are defined using ES6 classes:
+// e.g.
+    class Greeting extends React.Component {
+      render() {
+        return <h1>Hello, {this.props.name}</h1>;
+      }
+    }
+
+using JSX 
+to describe what your UI should look like. 
+// Each JSX element is just syntactic sugar for calling React.createElement(). 
+
+React provides several APIs for manipulating elements:
+    cloneElement()
+        // Clone and return a new React element using element as the starting point. 
+        // The resulting element will have the original element’s props with the new props merged in shallowly. 
+        // New children will replace existing children. 
+    isValidElement()
+    React.Children
+    
+React.Children provides utilities for dealing with the this.props.children opaque data structure.
+// this.props.children — a special prop that is passed to components automatically.
+// https://learn.co/lessons/react-this-props-children
+
+React.Children.map(children, function[(thisArg)])
+
+Invokes a function on every immediate child contained within children with this set to thisArg. 
+// If children is an array it will be traversed and the function will be called for each child in the array. 
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
