@@ -214,7 +214,7 @@ function Button(props) {
 
 export default App;
 */
-
+/*
 import React, {Component} from 'react';
 
 class App extends Component {
@@ -233,6 +233,50 @@ class App extends Component {
 const Number = ({number}) => (<div>{number}</div>);
 
 export default App;
+*/
 
+import React, {Component} from "react";
+import { BrowserRouter, Route, withRouter } from "react-router-dom";
 
+const Home = () => (
+  <div>
+    <h2>Home Page</h2>
+  </div>
+);
+
+const Button = (props) => {
+  return (
+    <button onClick={() => {
+      props.history.push("/");
+    }}>
+      Login
+    </button>
+  );
+};
+const WithRouterButton = withRouter(Button);
+
+const Login = (props) => {
+  console.log(props);
+  return (
+    <div>
+      <h2>Login Page</h2>
+      <WithRouterButton />
+    </div>
+  );
+};
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path="/" component={Home} />
+          <Route path="/login" component={Login} />
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
 

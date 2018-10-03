@@ -225,10 +225,40 @@ All primitives are immutable, i.e., they cannot be altered.
 What will trigger re-rendering for React Component?
     Only state change will trigger componnet re-rendering. 
     Pure props changes cannot trigger re-rendering.
+ 
+   
+The <Route> component
+It renders some UI if the current location matches the route’s path. 
 
+// e.g. <Route exact={true} path="/" component={Home} />
 
+The <Link> component 
+is used to navigate between pages. 
+It’s comparable to the HTML anchor element. 
+// However, using anchor links would result in a browser refresh. 
+use <Link> to navigate to a particular URL 
+and have the view re-rendered 
+without a browser refresh.
 
+// e.g. <Link to="/about">About</Link>
 
+the <Switch> component 
+With <Switch>, only the 1st child <Route> that matches the location gets rendered.
+
+// e.g. path="/users" & path="/:pageName"
+
+// put the <Route> for "path=/:pageName" after "path=/users".
+
+Every component which is in Routes component props has 3 more props by default: 
+    match , 
+    location, 
+    history.
+If using the render syntax, the component won't have those 3 props, have to use 
+withRouter() to get that.
+// e.g. <Route path="/" render={() => <Home />} />
+Use withRouter() will give component history and the closest match and location.
+
+// e.g. const WithRouterButton = withRouter(Button);
 
 
 
