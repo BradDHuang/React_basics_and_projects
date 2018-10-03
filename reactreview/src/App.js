@@ -236,7 +236,7 @@ export default App;
 */
 
 import React, {Component} from "react";
-import { BrowserRouter, Route, withRouter } from "react-router-dom";
+import { BrowserRouter, Route, withRouter, Link } from "react-router-dom";
 
 const Home = () => (
   <div>
@@ -256,11 +256,35 @@ const Button = (props) => {
 const WithRouterButton = withRouter(Button);
 
 const Login = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div>
       <h2>Login Page</h2>
       <WithRouterButton />
+    </div>
+  );
+};
+
+const Users = ({match}) => {
+  // console.log(match);
+  return (
+    <div>
+      <ul>
+        <li><Link to={`${match.url}/1`}>Page of User 1</Link></li>
+        <li><Link to={`${match.url}/2`}>Page of User 2</Link></li>
+        <li><Link to={`${match.url}/3`}>Page of User 3</Link></li>
+      </ul>
+      <Route 
+        path={`${match.path}/:userId`}
+        render={({match}) => {
+          // console.log(match);
+          return (
+            <div>
+              <h3>userId: {match.params.userId}</h3>
+            </div>
+          );
+        }}
+      />
     </div>
   );
 };
@@ -270,8 +294,16 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/login">Login</Link></li><li>
+              <Link to="/users">Users</Link></li>
+            </ul>
+          </nav>
           <Route exact={true} path="/" component={Home} />
           <Route path="/login" component={Login} />
+          <Route path="/users" component={Users} />
         </div>
       </BrowserRouter>
     );

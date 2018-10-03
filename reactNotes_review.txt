@@ -251,11 +251,30 @@ With <Switch>, only the 1st child <Route> that matches the location gets rendere
 
 Every component which is in Routes component props has 3 more props by default: 
     match , 
+    // e.g. match: {path: "/login", url: "/login", isExact: true, params: {…}}
+        // match.params: 
+            // An object containing key/value pairs from the URL 
+            // e.g. <p>match.params: {JSON.stringify(match.params)}</p>
+        // path - (string) The path pattern used to match. Useful for building nested <Route>s
+        // url - (string) The matched portion of the URL. Useful for building nested <Link>s
+            // Consider the route "/users/:userId". 
+            // match.path would be "/users/:userId" while 
+            // match.url would have the :userId value filled in, e.g. "users/5".
     location, 
     history.
 If using the render syntax, the component won't have those 3 props, have to use 
 withRouter() to get that.
+
+// The render prop expects a function 
+// that returns an element 
+// when the location matches the route’s path.
+    // e.g. "/users" is Not a match for path "/users/:userId", while "/users/1" is a match.
+
 // e.g. <Route path="/" render={() => <Home />} />
+        <Route
+          path="/:pageName"
+          render={props => <p>match.url: {props.match.url}</p>}
+        />
 Use withRouter() will give component history and the closest match and location.
 
 // e.g. const WithRouterButton = withRouter(Button);
