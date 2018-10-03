@@ -196,6 +196,32 @@ How to use axios
       });
 
 
+PureComponent 
+is exactly the same as Component 
+except that when props or state changes, 
+PureComponent will do 
+a shallow comparision 
+on both props and state.
+
+// A shallow comparision check 
+means that JS only checks that the value’s object ids are the same, 
+not that their content is the same. 
+The id here means 
+the memory address 
+for where JS stores the information for that particular object.
+
+All primitives are immutable, i.e., they cannot be altered. 
+    var bar = 'baz';
+    console.log(bar); // baz
+    bar.toUpperCase();
+    console.log(bar); // baz
+    
+    // Assignment gives the primitive a new (not a mutated) value
+    bar = bar.toUpperCase(); 
+    console.log(bar); // BAZ
+    
+// A primitive (primitive value, primitive data type) is data that is not an object and has no methods.
+
 
 
 

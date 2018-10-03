@@ -1,4 +1,4 @@
-
+/*
 import React, {Component} from "react";
 import "./App.css";
 import Text from "./Text.js";
@@ -71,3 +71,58 @@ class App extends Component {
 }
 
 export default App;
+*/
+
+import React, {Component, PureComponent} from 'react';
+
+class Pure extends PureComponent {
+  render() {
+    console.log('pure component render() called');
+    return (
+      <div>
+        <h3>Pure Component</h3>
+        <p>{this.props.user.username}</p>
+        <p>{this.props.user.id}</p>
+        <button onClick={this.props.addOne}>Add One</button>
+      </div>
+    );
+  }
+}
+class Regular extends Component {
+  render() {
+    console.log('component render() called');
+    return (
+      <div>
+        <h3>Component</h3>
+        <p>{this.props.user.username}</p>
+        <p>{this.props.user.id}</p>
+        <button onClick={this.props.addOne}>Add One</button>
+      </div>
+    );
+  }
+}
+
+class App extends Component {
+  state = {number: 1, user: {username: 'a', id: 1}};
+  addOne = () => {
+    this.setState({number: this.state.number + 1});
+  };
+  render() {
+    const {user, number} = this.state;
+    user.id = number;
+    console.log('current user: ', user);
+    return (
+      <div>
+        <Pure user={user} addOne={this.addOne} />
+        <Regular user={user} addOne={this.addOne} />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
