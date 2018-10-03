@@ -222,7 +222,9 @@ All primitives are immutable, i.e., they cannot be altered.
     
 // A primitive (primitive value, primitive data type) is data that is not an object and has no methods.
 
-
+What will trigger re-rendering for React Component?
+    Only state change will trigger componnet re-rendering. 
+    Pure props changes cannot trigger re-rendering.
 
 
 

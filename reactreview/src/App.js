@@ -122,7 +122,7 @@ class App extends Component {
 
 export default App;
 */
-
+/*
 import React, {Component} from 'react';
 
 // hoc for localization strings
@@ -213,7 +213,26 @@ function Button(props) {
 }
 
 export default App;
+*/
 
+import React, {Component} from 'react';
+
+class App extends Component {
+  number = 1;
+  componentDidMount() {
+    setInterval(() => {
+      console.log(this.number);
+      this.number++;
+    }, 1000);
+  }
+  render() {
+    return <Number number={this.number} />;
+  }
+}
+
+const Number = ({number}) => (<div>{number}</div>);
+
+export default App;
 
 
 
