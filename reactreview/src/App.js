@@ -72,7 +72,7 @@ class App extends Component {
 
 export default App;
 */
-
+/*
 import React, {Component, PureComponent} from 'react';
 
 class Pure extends PureComponent {
@@ -121,7 +121,98 @@ class App extends Component {
 }
 
 export default App;
+*/
 
+import React, {Component} from 'react';
+
+// hoc for localization strings
+const withLocalization = OldComponent => {
+  class NewComponent extends Component {
+    render() {
+      const template = {
+        en: {
+          hello: 'hello',
+          bye: 'bye',
+        },
+        cn: {
+          hello: '你好',
+          bye: '再见',
+        },
+      };
+      // get the language from this.props
+      // use en by default
+      const lang = this.props.lang || 'en';
+      const localizationString = template[lang];
+      return <OldComponent localizationString={localizationString} />;
+    }
+  }
+  return NewComponent;
+};
+
+// use hoc for Text and Button
+
+const WithLocalizationButton = withLocalization(Button);
+const WithLocalizationText = withLocalization(Text);
+
+// app component
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Header />
+        <Content />
+        <Footer />
+      </div>
+    );
+  }
+}
+
+// header component
+
+function Header(props) {
+  return (
+    <div>
+      <p>Header</p>
+      <WithLocalizationButton />
+    </div>
+  );
+}
+
+// content component
+function Content(props) {
+  return (
+    <div>
+      <p>Content</p>
+      <WithLocalizationText />
+    </div>
+  );
+}
+
+// footer component
+function Footer(props) {
+  return (
+    <div>
+      <p>Footer</p>
+    </div>
+  );
+}
+
+// Text component
+function Text(props) {
+  return (
+    <p>{props.localizationString ? props.localizationString.hello : ''}</p>
+  );
+}
+// Button component
+function Button(props) {
+  return (
+    <button>
+      {props.localizationString ? props.localizationString.bye : ''}
+    </button>
+  );
+}
+
+export default App;
 
 
 
