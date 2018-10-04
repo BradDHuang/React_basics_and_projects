@@ -234,7 +234,7 @@ const Number = ({number}) => (<div>{number}</div>);
 
 export default App;
 */
-
+/*
 import React, {Component} from "react";
 import { BrowserRouter, Route, withRouter, Link } from "react-router-dom";
 
@@ -311,4 +311,125 @@ class App extends Component {
 }
 
 export default App;
+*/
+
+import React, {Component} from "react";
+// import {BrowserRouter, Route, Redirect, Link} from 'react-router-dom';
+import {BrowserRouter, Route, withRouter, Link} from 'react-router-dom';
+
+const Admin = () => (
+  <div>
+    <h2>Admin Page - You've logged in now.</h2>
+  </div>
+);
+/*
+const Login = (props) => {
+  // console.log(props.location);
+  if (props.authenticated) {
+    return (<Redirect to={{pathname: "/"}} />);
+  } else {
+    return (
+      <div>
+        <h2>Login Page</h2>
+        <button onClick={props.onLoginBtnClick}>
+          Login
+        </button>
+      </div>
+    );
+  }
+};
+*/
+class Login extends Component {
+  componentDidMount() {
+    // console.log("Login did mount.");
+    
+    // this is why we need an extra login func. inside <Login>
+    
+    if (this.props.authenticated) {
+      this.props.history.push("/");
+    }
+  }
+  login = () => {
+    this.props.onLoginBtnClick();
+    this.props.history.push("/");
+  }
+  render() {
+    return (
+      <div>
+        <h2>Login Page</h2>
+        <button onClick={this.login}>
+          Login
+        </button>
+      </div>
+    );
+  }
+}
+/*
+const Home = (props) => {
+  // console.log(props.location);
+  if (props.authenticated) {
+    return (<Admin />);
+  } else {
+    return (
+      <Redirect to={{pathname: "/login"}} />
+    );
+  }
+};
+*/
+
+class Home extends Component {
+  componentDidMount() {
+    // console.log("componentDidMount() got called after render().");
+    if (!this.props.authenticated) {
+      this.props.history.push("/login");
+    }
+  }
+  render() {
+    // console.log("render() got called before componentDidMount()");
+    return <Admin />;
+  }
+}
+
+const WithRouterLogin = withRouter(Login);
+const WithRouterHome = withRouter(Home);
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { authenticated: false };
+  }
+  onLoginBtnClick = () => {
+    this.setState({ authenticated: true });
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
+          </nav>
+          <Route path="/" exact={true} 
+            // render={() => <Home authenticated={this.state.authenticated} />}
+            render={() => <WithRouterHome authenticated={this.state.authenticated} />}
+          />
+          <Route path="/login" 
+            // render={() => <Login 
+            render={() => <WithRouterLogin 
+              authenticated={this.state.authenticated} 
+              onLoginBtnClick={this.onLoginBtnClick}
+            />}
+          />
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
+
+
+
 

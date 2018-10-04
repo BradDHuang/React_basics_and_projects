@@ -280,6 +280,16 @@ Use withRouter() will give component history and the closest match and location.
 // e.g. const WithRouterButton = withRouter(Button);
 
 
+Protected Routes
+// If someone tries to access /admin, they'd be required to log in first. 
+
+<Redirect> 
+will replace the current location in the history stack with a new location. 
+// The new location is specified by the to prop.
+// e.g.
+    <Redirect to={{pathname: '/login', state: {from: props.location}}} />
+    
+// Or, use this.props.history.push() & withRouter() for protected routes.
 
 
 
