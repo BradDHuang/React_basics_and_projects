@@ -312,14 +312,14 @@ class App extends Component {
 
 export default App;
 */
-
+/*
 import React, {Component} from "react";
 // import {BrowserRouter, Route, Redirect, Link} from 'react-router-dom';
 import {BrowserRouter, Route, withRouter, Link} from 'react-router-dom';
 
 const Admin = () => (
   <div>
-    <h2>Admin Page - You've logged in now.</h2>
+    <h2>Admin Page - You are logged in now.</h2>
   </div>
 );
 /*
@@ -338,7 +338,7 @@ const Login = (props) => {
     );
   }
 };
-*/
+*//*
 class Login extends Component {
   componentDidMount() {
     // console.log("Login did mount.");
@@ -376,7 +376,7 @@ const Home = (props) => {
   }
 };
 */
-
+/*
 class Home extends Component {
   componentDidMount() {
     // console.log("componentDidMount() got called after render().");
@@ -436,7 +436,7 @@ class App extends Component {
 }
 
 export default App;
-
+*/
 /*
 import React, {Component} from "react";
 import {BrowserRouter, Route, withRouter} from "react-router-dom";
@@ -494,4 +494,102 @@ class App extends Component {
 
 export default App;
 */
+
+import React, {Component} from "react";
+import {BrowserRouter, Route, Redirect, Link, withRouter} from 'react-router-dom';
+
+const Admin = () => (
+  <div>
+    <h2>Admin Page - You are logged in now.</h2>
+  </div>
+);
+
+// class Home extends Component {
+//   componentDidMount() {
+//     if (!this.props.authenticated) {
+//       this.props.history.push("/login");
+//     }
+//   }
+//   render() {
+//     return <Admin />;
+//   }
+// }
+
+// user will still see the Admin Page first 
+// even if the page will be redirected to "/login" 
+// within a very short time.
+
+class Home extends Component {
+  render() {
+    return this.props.authenticated ? (
+      <Admin />
+    ) : (
+      <Redirect to={{pathname: "/login"}} />
+    );
+  }
+}
+
+class Login extends Component {
+  login = () => {
+    this.props.onLoginBtnClick();
+    this.props.history.push('/');
+  };
+  render() {
+    if (this.props.authenticated) {
+      return <Redirect to={{pathname: "/"}} />;
+    } else {
+      return (
+        <div>
+          <h2>Login Page</h2>
+          <button onClick={this.login}>Login</button>
+        </div>
+      );
+    }
+  }
+}
+
+const WithRouterLogin = withRouter(Login);
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { authenticated: false };
+  }
+  // componentDidMount() {
+  //   const state = JSON.parse(localStorage.getItem("reactState")) || {};
+  //   if (state.authenticated) {
+  //     this.setState({ authenticated: true });
+  //   }
+  // }
+  onLoginBtnClick = () => {
+    this.setState({ authenticated: true });
+    // localStorage.setItem("reactState", JSON.stringify({authenticated: true}));
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </ul>
+          </nav>
+          <Route path="/" exact={true} 
+            render={() => <Home authenticated={this.state.authenticated} />}
+          />
+          <Route path="/login" 
+            // render={() => <Login 
+            render={() => <WithRouterLogin 
+              authenticated={this.state.authenticated} 
+              onLoginBtnClick={this.onLoginBtnClick}
+            />}
+          />
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
 
