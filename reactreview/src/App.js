@@ -398,8 +398,15 @@ class App extends Component {
     super(props);
     this.state = { authenticated: false };
   }
+  componentDidMount() {
+    const state = JSON.parse(localStorage.getItem("reactState")) || {};
+    if (state.authenticated) {
+      this.setState({ authenticated: true });
+    }
+  }
   onLoginBtnClick = () => {
     this.setState({ authenticated: true });
+    localStorage.setItem("reactState", JSON.stringify({authenticated: true}));
   }
   render() {
     return (
@@ -430,6 +437,61 @@ class App extends Component {
 
 export default App;
 
+/*
+import React, {Component} from "react";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 
+const Home = (props) => {
+  return (
+    <div>
+      <h2>Home Page</h2>
+    </div>
+  );
+};
 
+const Button = (props) => {
+  console.log("props in Button:");
+  console.log(props);
+  return <button>Button</button>;
+};
+const WithRouterButton = withRouter(Button);
+
+const About = (props) => {
+  console.log("props in About:");
+  console.log(props);
+  return (
+    <div>
+      <h2>About Page</h2>
+      <WithRouterButton />
+    </div>
+  );
+};
+
+const Users = (props) => {
+  console.log("props in User:");
+  console.log(props);
+  return (
+    <div>
+      <h2>Users Page</h2>
+      <WithRouterButton />
+    </div>
+  );
+};
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Route exact={true} path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/users" component={Users} />
+        </div>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
+*/
 

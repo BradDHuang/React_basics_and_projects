@@ -292,6 +292,17 @@ will replace the current location in the history stack with a new location.
 // Or, use this.props.history.push() & withRouter() for protected routes.
 
 
+// localStorage
+    If we want React to keep its previous state or data 
+    after refreshing the page. 
+    We can use localStorage to solve this problem.
+    // e.g.
+    localStorage.getItem()
+    localStorage.setItem()
+    localStorage.removeItem()
+    // localStorage can only store strings.
+
+
 
 
 
