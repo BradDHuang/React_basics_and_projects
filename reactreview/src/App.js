@@ -494,7 +494,7 @@ class App extends Component {
 
 export default App;
 */
-
+/*
 import React, {Component} from "react";
 import {BrowserRouter, Route, Redirect, Link, withRouter} from 'react-router-dom';
 
@@ -592,4 +592,47 @@ class App extends Component {
 }
 
 export default App;
+*/
+
+import React, {Component} from 'react';
+// import axios from 'axios';
+import { getUsers } from "./api";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { list: [] };
+  }
+  componentDidMount() {
+    // axios
+    //   .get("http://api.haochuan.io/github/users")
+    //   .then(res => {
+    //     console.log(res.data);
+    //     this.setState({ list: res.data });
+    //   });
+    getUsers()
+      .then(res => {
+        console.log(res.data);
+        this.setState({ list: res.data });
+      });
+  }
+
+  render() {
+    return (
+      <div>
+        <ul>
+          {this.state.list.map((item, index) => {
+            return <li key={index}>{item.login}</li>;
+          })}
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
 
