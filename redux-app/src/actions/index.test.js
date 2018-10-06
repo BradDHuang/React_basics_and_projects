@@ -1,7 +1,7 @@
 
 import * as actions from './index';
 
-const expect = require("expect");
+// const expect = require("expect");
 
 describe('todo actions', () => {
   it('addTodo should create ADD_TODO action', () => {
