@@ -1,6 +1,6 @@
 
 import store from './configStore';
-const expect = require("expect");
+// const expect = require("expect");
 
 describe('Test for store', () => {
   it('Should have the init value', () => {

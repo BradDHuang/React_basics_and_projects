@@ -1,7 +1,7 @@
 
 import todos from "./todos";
 
-const expect = require("expect");
+// const expect = require("expect");
 
 describe('Test for todos reducer', () => {
   it('Should return empty array as init value', () => {

@@ -1,6 +1,6 @@
 
 import filter from './filter';
-const expect = require("expect");
+// const expect = require("expect");
 
 describe('Test for filter reducer', () => {
   it('Should return "all" for default state', () => {

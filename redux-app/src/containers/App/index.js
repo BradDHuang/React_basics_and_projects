@@ -1,6 +1,5 @@
 
 import React, { Component } from 'react';
-
 import {connect} from "react-redux";
 
 import AddTodo from '../../components/AddTodo';
@@ -39,7 +38,8 @@ const mapStateToProps = (state) => {
     filter: state.filter,
   };
 };
-// mapping state.todos as props.todos 
+// mapping state.todos 
+// as props.todos 
 // and state.filter as props.filter in App component.
 
 const mapDispatchToProps = (dispatch) => {
@@ -56,7 +56,8 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-// mapping the func. setFilter as props.setFilter in App componnet.
+// mapping the func. setFilter 
+// as props.setFilter in App componnet.
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // both are optional.
