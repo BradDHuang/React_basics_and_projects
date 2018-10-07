@@ -16,8 +16,8 @@ class App extends Component {
   }
   */
   render() {
-    console.log(this.props.todos);
-    console.log(this.props.filter);
+    console.log("todos: ", this.props.todos); 
+    console.log(`filter: ${this.props.filter}`);
     return (
       <div>
           <AddTodo addTodo={this.props.addTodo} />
