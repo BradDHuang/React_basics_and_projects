@@ -69,6 +69,21 @@ ref
 to get form values from the DOM.
 
 
+setState()
+Because this.props and this.state may be updated asynchronously, 
+you should not rely on their values for calculating the next state.
+
+To fix it, use a 2nd form of setState() 
+that accepts a function 
+rather than an object. 
+
+That function will receive 
+the previous state as the 1st argument, 
+and the props at the time the update is applied as the 2nd argument:
+// e.g.
+    this.setState((state, props) => ({
+      counter: state.counter + props.increment
+    }));
 
 
 
