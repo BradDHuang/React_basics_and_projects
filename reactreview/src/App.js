@@ -635,6 +635,11 @@ export default App;
 
 import React, {Component} from "react";
 import Panel from "./Panel";
+import MovieBrowser from "./MovieBrowser";
+
+function Movie(props) {
+  return <div>{props.title}</div>;
+}
 
 class App extends Component {
   render() {
@@ -646,6 +651,12 @@ class App extends Component {
           <div>Movie stuff...c3</div>
           <div>Movie stuff...c4</div>
         </Panel>
+        <br />
+        {"Now playing: "}
+        <MovieBrowser>
+          <Movie title="Mad Max: Fury Road" />
+          <Movie title="Harry Potter & The Goblet Of Fire" />
+        </MovieBrowser>
       </div>
     );
   }
