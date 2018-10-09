@@ -593,7 +593,7 @@ class App extends Component {
 
 export default App;
 */
-
+/*
 import React, {Component} from 'react';
 // import axios from 'axios';
 import { getUsers } from "./api";
@@ -631,8 +631,27 @@ class App extends Component {
 }
 
 export default App;
+*/
 
+import React, {Component} from "react";
+import Panel from "./Panel";
 
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Panel title="Browse for movies">
+          <div>Movie stuff...c1</div>
+          <div>Movie stuff...c2</div>
+          <div>Movie stuff...c3</div>
+          <div>Movie stuff...c4</div>
+        </Panel>
+      </div>
+    );
+  }
+}
+
+export default App;
 
 
 
