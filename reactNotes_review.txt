@@ -397,4 +397,22 @@ JSX allows embedding any expression in curly braces so we could inline the map()
         </ul>
 
 
+What is the Virtual DOM?
+    The virtual DOM (VDOM) is a programming concept 
+    where an ideal, or “virtual”, representation of a UI 
+    is kept in memory 
+    and synced with the “real” DOM 
+    by a library such as ReactDOM. 
+
+This approach enables the declarative API of React: 
+    You tell React what state you want the UI to be in, 
+    and it makes sure the DOM matches that state.
+
+
+
+
+
+
+
+
 
