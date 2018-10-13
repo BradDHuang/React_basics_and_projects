@@ -158,6 +158,26 @@ and corresponds to the part of the state it manages.
     // handles different part 
        of a single store 
        instead of many stores.
+       
+// e.g.
+    const rootReducer = combineReducers({potato: potatoReducer, tomato: tomatoReducer});
+    
+    // This would produce the following 
+    // ******
+    // state object
+    // ******
+    
+    // then you can use state.potato & state.tomato
+    // in mapStateToProps()
+    
+    {
+      potato: {
+        // ... potatoes, and other state managed by the potatoReducer ... 
+      },
+      tomato: {
+        // ... tomatoes, and other state managed by the tomatoReducer ...
+      }
+    }
 
 
 react-redux: 
