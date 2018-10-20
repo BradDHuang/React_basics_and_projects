@@ -1,0 +1,30 @@
+.app_page {
+    margin: 50px 50px;
+}
+
+.submit_btn {
+    margin-top: 20px;
+    margin-left: 50px;
+    background-color: #4CAF50; /* Green */
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.submit_btn:hover {
+    background-color: #4CDD50;
+}
+
+.answers {
+    padding-left: 20px;
+    font-family: Arial;
+}
+
+.question {
+    font-family: Arial;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.warning_msg {
+    color: red;
+}
