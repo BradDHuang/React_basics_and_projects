@@ -45,20 +45,21 @@ const questionReducer = (state = questions, action) => {
             return state.map((q) => {
                 // console.log(typeof questionID, typeof q.id); // number number
                 if (questionID === (q.id - 1)) {
-                    let answers = q.answers.map((a) => {
+                    q.answers.map((a) => {
                         // console.log(typeof answerID, typeof a.id); // string number
                         if (parseInt(answerID, 10) === a.id) {
                             // The matching question/answer's responses should be incremented.
                             // console.log(a.responses);
-                            return { ...a, "responses": a.responses + 1 };
-                        } else {
-                            return a;
-                        }
+                             let updatedAns = Object.assign( a, {"responses": a.responses + 1} );
+                             return updatedAns;
+                        } 
+                        return a;
+                        
                     });
-                    return { ...q, answers };
-                } else {
-                    return q;
-                }
+                    // return { ...q, answers };
+                } 
+                return q;
+                
             });
         
         default:
@@ -68,24 +69,27 @@ const questionReducer = (state = questions, action) => {
 
 const store = createStore(questionReducer);
 
-const Text = (props) => {
-    // console.log(typeof props.answerID); // string
-    return (
-        <div>
-            <p className="question">
-                {`You selected: ${props.question.answers[parseInt(props.answerID, 10) - 1].text}`}
-            </p>
+class Text extends Component {
+    render() {
+        const { question, answerID } = this.props;
+        const id = answerID - 1;
+        return (
             <div>
-                <p className="question">{"Responses:"}</p>
-                {props.question.answers.map((a) => (
-                    <div key={a.id} className="answers">
-                        {`${a.text}: ${a.responses}`}
-                    </div>
-                ))}
+                <div className="question">
+                    <h3>You selected: {question.answers[id].text}</h3>
+                </div>
+                <div>
+                    <div className="question">{"Responses:"}</div>
+                    {question.answers.map((a) => (
+                        <div key={a.id} className="answers">
+                            {`${a.text}: ${a.responses}`}
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
 class Form extends Component {
     constructor(props) {
