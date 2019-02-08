@@ -632,7 +632,7 @@ class App extends Component {
 
 export default App;
 */
-
+/*
 import React, {Component} from "react";
 import Panel from "./Panel";
 import MovieBrowser from "./MovieBrowser";
@@ -663,6 +663,34 @@ class App extends Component {
 }
 
 export default App;
+*/
 
+// class App extends Component {
+//   render() {
+//     return (
+      
+//     );
+//   }
+// }
 
+import React from "react";
+
+// function getBtnText() {
+//   return "Click";
+// }
+
+const App = function() {
+  const btnText = ["Sub", "mit"];
+  return (
+    <div>
+      <label className="label" htmlFor="name">
+        Enter name: 
+      </label>
+      <input id="name" type="text" />
+      <button style={{ backgroundColor: 'green', color: 'white' }}>{btnText}</button>
+    </div>
+  );
+};
+
+export default App;
 
