@@ -672,7 +672,7 @@ export default App;
 //     );
 //   }
 // }
-
+/*
 import React from "react";
 
 // function getBtnText() {
@@ -693,4 +693,24 @@ const App = function() {
 };
 
 export default App;
+*/
+
+import React from "react";
+import faker from "faker";
+import CommentDetail from "./CommentDetail";
+
+const App = () => {
+  return (
+    // <div>Demo</div>
+    <div className="ui container comments">
+      <CommentDetail author="Alex" timeAgo="Today at 8:00AM" postText="First post!" avatar={faker.image.avatar()} />
+      <CommentDetail author="Ben" timeAgo="Today at 10:00AM" postText="Second post" avatar={faker.image.avatar()} />
+      <CommentDetail author="Carl" timeAgo="Today at 12:00PM" postText="Third post" avatar={faker.image.avatar()} />
+    </div>
+  );
+};
+
+export default App;
+// https://semantic-ui.com/
+// https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css
 
