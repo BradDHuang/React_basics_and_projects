@@ -694,7 +694,7 @@ const App = function() {
 
 export default App;
 */
-
+/*
 import React from "react";
 import faker from "faker";
 import CommentDetail from "./CommentDetail";
@@ -720,4 +720,35 @@ const App = () => {
 export default App;
 // https://semantic-ui.com/
 // https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css
+*/
+
+import React from "react";
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { lat: null, errMsg: "" };
+    // https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API
+    window.navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({ lat: position.coords.latitude });
+      },
+      (err) => {
+        this.setState({ errMsg: err.message });
+      }
+    );
+  }
+  
+  render() {
+    if (this.state.errMsg) {
+      return <div>Error: {this.state.errMsg}</div>;
+    }
+    if (!this.state.errMsg && this.state.lat) {
+      return <div>Latitude: {this.state.lat}</div>;
+    }
+    return <div>Loading...</div>;
+  }
+}
+
+export default App;
 
