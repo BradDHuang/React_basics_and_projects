@@ -771,18 +771,41 @@ export default App;
 */
 
 import React from "react";
+// import axios from "axios
+import unsplash from "./api/unsplash";
+
 import SearchBar from "./SearchBar";
 
 // const App = () => {
 class App extends React.Component {
-  onSearchSubmit = (term) => {
-    console.log(term);
+  state = { images: [] };
+  
+  // async onSearchSubmit(term) {
+  onSearchSubmit = async (term) => {  
+    
+    // console.log(term);
+    
+    // GET /search/photos
+    // Location
+// The API is available at https://api.unsplash.com/. Responses are sent as JSON.
+    // const res = await axios.get("/search/photos", {
+    const res = await unsplash.get("/search/photos", {
+      params: { query: term },
+    });
+    // .then(res => {
+    //   // console.log(res);
+    //   console.log(res.data.results);
+    // });
+    
+    // console.log(res.data.results);
+    this.setState({ images: res.data.results });
   }
   
   render() {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar onSubmit={this.onSearchSubmit} />
+        Results: {this.state.images.length} images found.
       </div>
     );
   }
@@ -790,4 +813,8 @@ class App extends React.Component {
 // };
 
 export default App;
+
+// https://unsplash.com/developers
+// https://unsplash.com/oauth/applications
+// https://unsplash.com/documentation#search-photos
 
