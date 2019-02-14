@@ -721,7 +721,7 @@ export default App;
 // https://semantic-ui.com/
 // https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css
 */
-
+/*
 import React from "react";
 import SeasonDisplay from "./SeasonDisplay";
 import Spinner from "./Spinner";
@@ -766,6 +766,28 @@ class App extends React.Component {
     );
   }
 }
+
+export default App;
+*/
+
+import React from "react";
+import SearchBar from "./SearchBar";
+
+// const App = () => {
+class App extends React.Component {
+  onSearchSubmit = (term) => {
+    console.log(term);
+  }
+  
+  render() {
+    return (
+      <div className="ui container" style={{ marginTop: "10px" }}>
+        <SearchBar onSubmit={this.onSearchSubmit} />
+      </div>
+    );
+  }
+}
+// };
 
 export default App;
 
