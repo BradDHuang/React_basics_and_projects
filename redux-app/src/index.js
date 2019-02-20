@@ -1,9 +1,11 @@
 import {createStore} from "redux";
-import React, {Component} from "react";
-import {connect, Provider} from "react-redux";
+import React from "react";
+import { Provider } from "react-redux";
 import ReactDOM from 'react-dom';
-import "./style.css";
-
+// import "./style.css";
+import App from './components/App';
+import reducers from './reducers';
+/*
 const questions = [{
   "id": 1,
   "text": "Favorite color",
@@ -206,6 +208,14 @@ const App = connect(mapStateToProps, mapDispatchToProps)(AppPage);
 
 ReactDOM.render(
     <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById("root")
+);
+*/
+
+ReactDOM.render(
+    <Provider store={createStore(reducers)}>
         <App />
     </Provider>,
     document.getElementById("root")

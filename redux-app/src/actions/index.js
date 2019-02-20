@@ -1,4 +1,4 @@
-
+/*
 let nextTodoId = 0;
 
 export const addTodo = (text) => ({
@@ -17,9 +17,14 @@ export const toggleTodo = (id) => ({
     type: "TOGGLE_TODO",
     id
 });
+*/
 
-
-
+export const selectSong = (song) => {
+    return {
+        type: 'SONG_SELECTED',
+        payload: song
+    };
+};
 
 
 

@@ -74,3 +74,6 @@ store.dispatch(deletePolicy("Ben"));
 
 console.log(store.getState());
 
+// CodePen ref: 
+// https://codepen.io/anon/pen/PVLJed?editors=0011
+
