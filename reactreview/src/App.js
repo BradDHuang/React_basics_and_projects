@@ -769,7 +769,7 @@ class App extends React.Component {
 
 export default App;
 */
-
+/*
 import React from "react";
 // import axios from "axios
 import unsplash from "./api/unsplash";
@@ -818,4 +818,7 @@ export default App;
 // https://unsplash.com/developers
 // https://unsplash.com/oauth/applications
 // https://unsplash.com/documentation#search-photos
+*/
+
+
 
