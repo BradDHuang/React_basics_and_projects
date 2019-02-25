@@ -120,7 +120,7 @@ React & its features:
     
     In React, we describe UIs using components. 
     
-    React's name is the simple explanation of how Reacdt works. 
+    React's name is the simple explanation of how React works. 
     When the input of a component changes, 
     the UI it represents (the output) changes automatically. 
     
@@ -403,12 +403,52 @@ What is the Virtual DOM?
     is kept in memory 
     and synced with the “real” DOM 
     by a library such as ReactDOM. 
+    
+    A data structure
+    stored by React
+    that tracks changes
+    from one render state
+    to the next.
+    If sth. has changed from one render to the next,
+    the browser's DOM is updated (Reconciliation).
 
 This approach enables the declarative API of React: 
     You tell React what state you want the UI to be in, 
     and it makes sure the DOM matches that state.
 
+React 16:
 
+    render can return an array of JSX elements or a string.
+    
+    Fiber
+    
+https://reactjs.org/docs/forms.html
+
+Uncontrolled Component:
+    e.g. <input type="text" />
+    
+    // the browser is in charge of the state.
+    
+Controlled Component:
+    e.g. 
+    <input type="text" value={this.state.inputText} />
+    
+    // React is in charge of the state 
+    // via this.state.inputText.
+    
+Controlled Component with Update:
+    e.g.
+    <input 
+        type="text"
+        name="inputText"
+        value={this.state.inputText}
+        onChange={e => this.setState({ inputText: e.target.value })}
+    />
+
+Note: Only form elements with a name attribute will have their values passed when submitting a form.
+
+
+    
 
 
 
