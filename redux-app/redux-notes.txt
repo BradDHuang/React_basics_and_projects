@@ -3,6 +3,10 @@ Redux：
     a predictable 
     state container 
     for JS apps.
+    A state management library.
+    
+    Models the app. state as 
+    a Single JS Obj.
     
     helps you write applications that 
     
@@ -64,6 +68,10 @@ When to use Redux
        // which is just 
           a JS string 
           to indicate the change.
+          e.g.
+          {
+            type: "LOGOUT_USER"
+          }
 
     3. Changes 
        are made with 
@@ -83,9 +91,16 @@ When to use Redux
        
        // to describe the logic of how to change the state 
        // you have to write a function 
-       // that takes the previous state of the app 
-       // and the action being dispatched, 
-       // then returns the next state of the app. 
+       // that takes 1. the previous state of the app 
+       // and 2. the action being dispatched, 
+       // then returns 
+       // the next/new state of the app. 
+       e.g. 
+       function rootReducer(state, action) {
+         switch(action.type) {
+           ...
+         }
+       }
        
        Pure functions 
            are those whose return values 
@@ -136,9 +151,16 @@ When to use Redux
         
          1. getState()
            retrieves the current state of the Redux store.
+           e.g.
+           const newState = store.getState();
            
          2. dispatch()
            how we dispatch actions to change the state of the application.
+           // the Only way to change the state.
+           e.g.
+           store.dispatch({
+             type: "LOGOUT_USER"
+           });
            
          3. subscribe()
            registers a callback that the redux store will call 
@@ -183,12 +205,11 @@ and corresponds to the part of the state it manages.
 react-redux: 
 
     an official 
-    binding library 
+    binding/integrating library 
     to use Redux with React.
     
-use a special Component 
-
-    <Provider> 
+use a special 
+Component <Provider> 
 from react-redux, to magically 
 make the store available to 
 all React Components 
@@ -197,13 +218,22 @@ without
 passing it every time. 
 
     Only need to use it 
-    once 
+    Once 
     when render 
     the root Component.
-
+e.g.
+    import ...;
+    const store = createStore(rootReducer);
+    ReactDOM.render(
+        <Provider store={store}>
+            <App />
+        </Provider>,
+        document.getElementById('root')
+    );
 
 connect our App Component with Redux using 
-    connect() 
+    connect() // func. 
+    // Wrapping a component
 from react-redux:
 
 
@@ -214,7 +244,11 @@ into the props
 you want to pass to 
 a presentational/stateless component 
 you are wrapping.
-
+e.g.
+    import ...;
+    const BoldName = ({name}) => (<strong>{name}</strong>);
+    const mapStateToProps = state => ({ name: state.name });
+    export default connect(mapStateToProps, null)(BoldName);
 
 In addition to reading the state, 
 components can dispatch actions. 
@@ -257,6 +291,18 @@ using Action Creator:
     doesn't have to know any of 
     the details 
     of creating and dispatching the action.
+
+Redux - Thunk (redux-thunk)
+    Middleware used to handle Async actions in Redux.
+    Allows you to write action creators that 
+        return a func.
+        instead of an action,
+        which give you the access to 
+        store.getState() and store.dispatch() 
+        inside the func.
+    e.g.
+    const store = createStore(reducer, applyMiddleware(thunk));
+
 
 
 
