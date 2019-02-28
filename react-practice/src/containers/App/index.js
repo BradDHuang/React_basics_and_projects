@@ -56,7 +56,7 @@ class App extends Component {
 
 export default App;
 */
-
+/*
 import React, {Component} from 'react';
 import CheckBox from '../../CheckBox';
 import './index.css';
@@ -120,6 +120,33 @@ class App extends Component {
             return <CheckBox {...item} key={item.id} handleChildItemCheck={this.handleChildItemCheck} />;
           })}
         </ul>
+      </div>
+    );
+  }
+}
+
+export default App;
+*/
+
+import React, {Component} from 'react';
+
+class App extends Component {
+  state = { value: "" };
+  onOptionChange = e => {
+    this.setState({ value: e.target.value });
+  }
+  render() {
+    return (
+      <div style={{margin:"100px"}}>
+        <h3>React Dropdown Demo</h3>
+        <select value={this.state.value} onChange={this.onOptionChange}>
+          <option value="">Select</option>
+          <option value="React details">React</option>
+          <option value="HTML details">HTML</option>
+          <option value="CSS details">CSS</option>
+          <option value="JS details">JavaScript</option>
+        </select>
+        <p>{this.state.value}</p>
       </div>
     );
   }
