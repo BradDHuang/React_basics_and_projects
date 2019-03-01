@@ -39,10 +39,12 @@ export default reducers;
 
 import { combineReducers } from 'redux';
 import postsReducer from './postsReducer';
+import usersReducer from './usersReducer';
 
 export default combineReducers({
   // replaceLater: () => 'hello redux'
-  posts: postsReducer
+  posts: postsReducer,
+  users: usersReducer
 });
 
 // Reducers 
