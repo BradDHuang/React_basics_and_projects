@@ -38,8 +38,31 @@ export default reducers;
 */
 
 import { combineReducers } from 'redux';
+import postsReducer from './postsReducer';
 
 export default combineReducers({
-  replaceLater: () => 'hello redux'
+  // replaceLater: () => 'hello redux'
+  posts: postsReducer
 });
+
+// Reducers 
+// Must return any (state) value besides 'undefined'
+
+// Pure Reducers
+
+// https://github.com/reduxjs/redux/blob/master/src/combineReducers.js#L176
+// Must not 
+// 'Mutate'
+// its input 'state' argument
+// https://lodash.com/docs/4.17.11
+
+// strings and numbers are immutable
+// e.g.
+// const name = 'Sam'
+// name[0] = 'X'
+// name // 'Sam'
+
+// const nums = [1,2,3]
+// nums === [1,2,3] // false
+// ref. is not the same.
 

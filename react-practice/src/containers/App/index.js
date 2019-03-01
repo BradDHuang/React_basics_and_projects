@@ -138,9 +138,10 @@ class App extends Component {
   render() {
     return (
       <div style={{margin:"100px"}}>
-        <h3>React Dropdown Demo</h3>
-        <select value={this.state.value} onChange={this.onOptionChange}>
-          <option value="">Select</option>
+        <label htmlFor="tech-skills">Choose a tech skill </label>
+        <p></p>
+        <select onChange={this.onOptionChange} id="tech-skills">
+          <option value="">--Please choose an option--</option>
           <option value="React details">React</option>
           <option value="HTML details">HTML</option>
           <option value="CSS details">CSS</option>
