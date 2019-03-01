@@ -1,10 +1,14 @@
-import {createStore} from "redux";
+// import {createStore} from "redux";
 import React from "react";
 import { Provider } from "react-redux";
 import ReactDOM from 'react-dom';
 // import "./style.css";
 import App from './components/App';
 import reducers from './reducers';
+
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from "redux";
+
 /*
 const questions = [{
   "id": 1,
@@ -214,8 +218,10 @@ ReactDOM.render(
 );
 */
 
+const store = createStore(reducers, applyMiddleware(thunk));
+
 ReactDOM.render(
-    <Provider store={createStore(reducers)}>
+    <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById("root")

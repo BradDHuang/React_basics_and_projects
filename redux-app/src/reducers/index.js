@@ -10,7 +10,7 @@ const reducers = combineReducers({
 
 export default reducers;
 */
-
+/*
 import {combineReducers} from 'redux';
 
 const songsReducer = () => {
@@ -35,4 +35,11 @@ const reducers = combineReducers({
 });
 
 export default reducers;
+*/
+
+import { combineReducers } from 'redux';
+
+export default combineReducers({
+  replaceLater: () => 'hello redux'
+});
 

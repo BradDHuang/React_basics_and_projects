@@ -1,4 +1,4 @@
-
+/*
 import React, { Component } from 'react';
 import {connect} from "react-redux";
 
@@ -14,7 +14,7 @@ class App extends Component {
       this.props.setFilter('active');
     }, 5000);
   }
-  */
+  *//*
   render() {
     console.log("todos: ", this.props.todos); 
     console.log(`filter: ${this.props.filter}`);
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 // both are optional.
 // If passing nothing, nothing will be mapped.
-
+*/
 
 
 

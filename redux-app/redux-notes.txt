@@ -303,8 +303,36 @@ Redux - Thunk (redux-thunk)
     e.g.
     const store = createStore(reducer, applyMiddleware(thunk));
 
+General Data Loading with Redux:
+    //
+    Component gets rendered onto the screen
+    
+    Component's 'componentDidMount()' gets called
+    
+    Call action creator from 'componentDidMount()'
+    // 
+    Action creator runs code to make an API req.
+    
+    API responds with data
+    
+    Action creator returns an 'action' with the fetched data
+    on the 'payload' property
+    // 
+    Some reducer sees the 'action', 
+    returns the data off the 'payload'
+    
+    Since some new state obj. is generated,
+    redux/react-redux cause React App to be 
+    re-rendered.
 
-
+Middleware in Redux:
+    Function that gets called 
+    with every action dispatch.
+use
+Redux-Thunk 
+to solve 
+Async 
+issues.
 
 
 
