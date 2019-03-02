@@ -31,3 +31,5 @@ export default connect(mapStateToProps, { fetchUser })(UserHeader);
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
 
+// https://lodash.com/docs/4.17.11#memoize
+
