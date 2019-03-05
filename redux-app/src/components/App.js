@@ -39,8 +39,15 @@ export default App;
 */
 
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
+import StreamCreate from './Streams/StreamCreate';
+import StreamDelete from './Streams/StreamDelete';
+import StreamEdit from './Streams/StreamEdit';
+import StreamList from './Streams/StreamList';
+import StreamShow from './Streams/StreamShow';
+import Header from './Streams/Header';
+/*
 const PageOne = () => {
     return (
         <div>
@@ -57,16 +64,22 @@ const PageTwo = () => {
         </div>
     );
 };
-
+*/
 class App extends React.Component {
     render() {
         return(
+            <div className='ui container'>
             <BrowserRouter>
                 <div>
-                    <Route path='/' exact component={PageOne} />
-                    <Route path='/p2' component={PageTwo} />
+                    <Header />
+                    <Route path='/' exact component={StreamList} />
+                    <Route path='/streams/new' component={StreamCreate} />
+                    <Route path='/streams/show' component={StreamShow} />
+                    <Route path='/streams/edit' component={StreamEdit} />
+                    <Route path='/streams/delete' component={StreamDelete} />
                 </div>
             </BrowserRouter>
+            </div>
         );
     }
 }
