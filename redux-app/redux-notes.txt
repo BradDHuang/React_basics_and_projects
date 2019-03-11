@@ -334,6 +334,18 @@ to solve
 Async 
 issues.
 
+Steps for Setting up OAuth:
 
+    Create a new project at console.developers.google.com/
+    Set up OAuth confirmation screen;
+    Generate an OAuth Client ID;
+    Install Google's API library, initialize it with the OAuth Client ID;
+    Make sure the lib gets called any time the user clicks on the 'Login with Google' button.
+
+https://developers.google.com/api-client-library/javascript/reference/referencedocs
+
+const auth = gapi.auth2.getAuthInstance()
+auth.signIn()
+auth.isSignedIn.get()
 
 
