@@ -23,7 +23,7 @@ export const selectSong = (song) => {
     };
 };
 */
-
+/*
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 import _ from 'lodash';
 
@@ -34,6 +34,7 @@ export const fetchPosts = () => async dispatch => {
         payload: res.data
     });
 };
+*/
 /*
 export const fetchUser = (id) => async dispatch => {
     const res = await jsonPlaceholder.get(`/users/${id}`);
@@ -43,7 +44,7 @@ export const fetchUser = (id) => async dispatch => {
     });
 };
 */
-
+/*
 export const fetchUser = (id) => dispatch => _fetchUser(id, dispatch);
 
 const _fetchUser = _.memoize(async (id, dispatch) => {
@@ -53,4 +54,18 @@ const _fetchUser = _.memoize(async (id, dispatch) => {
         payload: res.data
     });
 });
+*/
+
+import { SIGN_IN, SIGN_OUT } from './types';
+
+export const signIn = (userId) => {
+    return { 
+        type: SIGN_IN,
+        payload: userId
+    };
+};
+export const signOut = () => {
+    return { type: SIGN_OUT };
+};
+
 

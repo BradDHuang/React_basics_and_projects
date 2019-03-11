@@ -36,7 +36,7 @@ const reducers = combineReducers({
 
 export default reducers;
 */
-
+/*
 import { combineReducers } from 'redux';
 import postsReducer from './postsReducer';
 import usersReducer from './usersReducer';
@@ -45,6 +45,15 @@ export default combineReducers({
   // replaceLater: () => 'hello redux'
   posts: postsReducer,
   users: usersReducer
+});
+*/
+
+import { combineReducers } from 'redux';
+import authReducer from './authReducer';
+
+export default combineReducers({
+  // replaceLater: () => 'hello redux'
+  auth: authReducer
 });
 
 // Reducers 
